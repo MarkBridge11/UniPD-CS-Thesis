@@ -1,16 +1,6 @@
 \chapter{Introduzione}
 \label{cap:introduzione}
-\section{Il progetto}
-Il progetto OmiPLAN nasce dall’esigenza di gestire le pianificazioni delle risorse aziendali per determinate tasks. Il progetto permette la creazione di richieste di pianificazione o direttamente di pianificazioni per prenotare delle persone per un determinato lasso di tempo a svolgere un incarico.\\
-Il Project Manager\textsubscript{g} potrà effettuare richieste di pianificazione di risorse aziendali, chiedendo disponibilità di figure professionali con determinate caratteristiche. Esso potrà inoltre visualizzare tramite una sezione apposita, lo stato delle proprie richieste.\\
-In seguito ad una richiesta emessa, il Program Manager distribuirà le risorse più adeguate alla richiesta. Successivamente all'accettazione e alla distribuzione delle risorse, il Project Manager potrà creare una pianificazione per ogni risorsa richiesta, specificando parametri quali la durata e l'attività da svolgere.\\
-In alternativa è possibile effettuare delle pianificazioni più dirette, per tasks più brevi, inserendo una delle risorse disponibili attualmente, su un determinato compito. Un esempio di quest’ultima applicazione può essere l’assegnazione per 2 giorni di uno sviluppatore per risolvere un bug.  
-Le informazioni relative alle risorse aziendali verranno recuperate da un database.\\
-L’applicativo permette la visione della lista completa dei dipendenti o consulenti, con una linea del tempo alla loro destra, contenente le tasks in cui sono coinvolti. È possibile interagire con quest'ultime per avere una view rapida della task o di espanderla o modificarla.\\ 
-Infine è possibile utilizzare un calendario per determinare se i giorni di assegnazione sono lavorativi o festivi.
-
-
-\section{L'azienda}
+\section{L'azienda ospitante}
 
 \begin{figure}[!h] 
     \centering 
@@ -18,17 +8,44 @@ Infine è possibile utilizzare un calendario per determinare se i giorni di asse
     \caption{Logo Omicron}
 \end{figure}
 
-L’azienda Omicron Consulting è specializzata nello sviluppo di software gestionali e di revisione di processi aziendali. Essa è presente nel mercato ICT dal 1980, spiccando su vari settori, in cui hanno effettuato importanti implementazioni in area ICT come: Manufacturing, Automotive, Aerospace, Logistics e altre aree.
+\noindent L’azienda Omicron Consulting è specializzata nello sviluppo di software gestionali e di revisione di processi aziendali. Essa è presente nel mercato ICT dal 1980, spiccando su vari settori, in cui hanno effettuato importanti implementazioni in area ICT come: Manufacturing, Automotive, Aerospace, Logistics e altre aree.
 Con particolare riferimento al settore Manufacturing si sono specializzati nello sviluppo di progetti di trasformazione ERP (acquisendo la certificazione VAR di SAP), stringendo alleanze strategiche con realtà ICT nazionali ed internazionali.\\
-I servizi per i loro clienti includono anche gestione AMS di sistemi ERP, la realizzazione di progetti sia in ambito di sistemi ERP di Business Intelligence che di sviluppi su sistemi custom.\\
+Offrono servizi di gestione e supporto di sistemi ERP, sviluppo di progetti di Business Intelligence e personalizzazione di sistemi software.\\
 Per completare il pacchetto dei servizi offerti, Omicron ha un’esperienza di alto livello negli ambiti Banking,Finance and Insurance, lavorando con le principali istituzioni bancarie e assicurative italiane.\\
 Omicron oltre alle offerte che dedica ai clienti, si occupa anche di garantire un’alta formazione delle proprie risorse, investendo su progetti di ricerca e sviluppo.
 
+\section{Il progetto}
+\subsection{Presentazione}
+L'applicativo permette la creazione di richieste di pianificazione di risorse aziendali a svolgere un incarico, in un determinato lasso di tempo.\\
+Il Project Manager\textsubscript{g} potrà effettuare richieste di pianificazione di risorse aziendali, chiedendo disponibilità di figure professionali con determinate caratteristiche. Esso potrà inoltre visualizzare, tramite una sezione apposita, lo stato delle proprie richieste.\\
+In seguito ad una richiesta accettata, il Program Manager\textsubscript{g} distribuirà le risorse più adeguate alla richiesta. Successivamente alla distribuzione delle risorse, il Project Manager potrà creare una pianificazione per ogni risorsa richiesta, specificando parametri quali la durata, l'attività da svolgere e altri parametri.\\
+Il software permette la visione della lista completa dei dipendenti o consulenti, con una linea del tempo alla loro destra, contenente le tasks\textsubscript{g} in cui sono coinvolti. È possibile interagire con quest'ultime per avere una visione rapida della task, con la possibilità di espanderla o modificarla.
+
+\subsection{Motivo alla base del progetto}
+L'approccio utilizzato per la gestione delle pianificazioni delle risorse e la loro disponibilità era gestito tramite file Excel compilati e revisionati dai Program manager. Le richieste di nuove pianificazioni, invece, sono comunicate ai Program manager nei modi più disparati (email, telefono, chat), rendendo difficile tenerne traccia.\\
+Il progetto nasce dunque dall’esigenza di semplificare la gestione delle richieste e delle pianificazioni, garantendo una visione più rapida della disponibilità delle risorse.
+
+\subsection{Il mio ruolo nel progetto}
+Le funzionalità da me sviluppate erano principalmente due: la gestione delle richieste e delle pianificazioni.
+Il tutto è stato realizzato creando nuove tabelle da inserire nel database per la fruizione dei servizi dell'applicativo e lo sviluppo dell'API\textsubscript{g} REST\textsubscript{g}. Gli endpoint\textsubscript{g} dell'API permettevano operazioni CRUD\textsubscript{g} su richieste, pianificazioni e sulle altre tabelle da me create.
+
+
+\section{Convenzioni tipografiche}
+Durante la stesura del testo sono state adottatele seguenti convenzioni:
+\begin{itemize}
+\item in ogni elenco puntato è stato deciso di inserire un punto e virgola (;) alla fine di ogni elemento ed un punto (.) per l'ultimo elemento di ogni elenco;
+\item la sezione del glossario conterrà i termini ritenuti ambigui o non di uso comune, che necessitano quindi di una loro definizione;
+\item alla prima occorrenza di un termine inserito nel glossario verrà segnato con la seguente nomenclatura: termine\textsubscript{g}.
+\end{itemize}
+
 
 \section{Organizzazione del testo}
-
+Questa sezione è dedicata alla spiegazione della struttura del documento, per dare indicazioni su come è organizzato il testo.
 \begin{description}
-    \item[{\hyperref[cap:processi-metodologie]{Il secondo capitolo}}] descrive ...
+
+\item {\hyperref[cap:introduzione]{Capitolo 1:}} introduce il progetto, il mio ruolo all'interno del progetto e il profilo aziendale. Questo capitolo è l'unica parte in cui si parlerà del progetto nella sua totalità rispetto ai capitoli successivi che saranno inerenti esclusivamente al mio lavoro svolto;
+
+    \item[{\hyperref[cap:analisi-requisiti]{Il secondo capitolo}}] descrive i casi d'uso individuati ed i relativi requisiti;
     
     \item[{\hyperref[cap:descrizione-stage]{Il terzo capitolo}}] approfondisce ...
     
@@ -39,11 +56,6 @@ Omicron oltre alle offerte che dedica ai clienti, si occupa anche di garantire u
     \item[{\hyperref[cap:verifica-validazione]{Il sesto capitolo}}] approfondisce ...
     
     \item[{\hyperref[cap:conclusioni]{Nel settimo capitolo}}] descrive ...
+    
 \end{description}
 
-Riguardo la stesura del testo, relativamente al documento sono state adottate le seguenti convenzioni tipografiche:
-\begin{itemize}
-	\item gli acronimi, le abbreviazioni e i termini ambigui o di uso non comune menzionati vengono definiti nel glossario, situato alla fine del presente documento;
-	\item per la prima occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura: \emph{parola}\glsfirstoccur;
-	\item i termini in lingua straniera o facenti parti del gergo tecnico sono evidenziati con il carattere \emph{corsivo}.
-\end{itemize}
