@@ -1,2 +1,99 @@
 \chapter{Progettazione}
 \label{cap:progettazione}
+
+\section{Scopo del capitolo}
+In questo capitolo si tratterà dei giorni successivi all'apprendimento del background tecnologico, in cui sono state improntate le basi dell'architettura del progetto, definendo inoltre uno schema iniziale del database su cui si poggerà l'API.\\
+Nei seguenti paragrafi verrà quindi trattata l'architettura e le configurazioni utilizzate che funzionano da base per l'implementazione di quanto sviluppato.\\
+
+\section{Configurazione del progetto}
+\subsection{Spring Initializr}
+
+\begin{figure}[!h] 
+    \centering 
+    \includegraphics[width=0.95\columnwidth]{Spring_initializr} 
+    \caption{Interfaccia Spring Initializr}
+\end{figure}
+
+\noindent \href{https://start.spring.io/}{Spring Initializr} è uno strumento online fornito dalla community di Spring Framework, che consente di creare rapidamente un progetto Spring Boot personalizzato, con le dipendenze e le configurazioni preselezionate dall'utente. Questo strumento semplifica notevolmente il processo di inizializzazione di un progetto Spring Boot, permettendo agli sviluppatori di risparmiare tempo e concentrarsi sulla scrittura del codice.\\
+L'utente può selezionare il tipo di progetto di cui ha bisogno, come ad esempio un progetto Maven o Gradle, e specificare il linguaggio e la versione di Spring Boot desiderati. Inoltre, può anche inserire i metadati del progetto, come il nome del progetto e il nome dei packages.\\
+Una volta selezionate le opzioni desiderate, l'utente può scegliere le dipendenze per il progetto. Le dipendenze sono librerie di terze parti che forniscono funzionalità aggiuntive al progetto.\\
+Dopo aver selezionato le dipendenze, l'utente può scaricare il progetto Spring Boot personalizzato in formato ZIP. 
+
+\subsection{File di configurazione}
+Il file ZIP scaricato precedentemente contiene tutti i file necessari per iniziare a lavorare sul progetto, inclusi i file di configurazione.
+Di seguito riporto il file pom.xml che si ottiene creando un progetto con le dipendenze sopra selezionate. La configurazione di Maven avviene proprio tramite questo file.\\
+All'interno di questo file si possono trovare tag di questo tipo:
+\begin{itemize}
+\item \textbf{groupId}, organizzazione che ha creato il progetto;
+\item \textbf{artifactId}, nome unico del progetto;
+\item \textbf{version},  versione del progetto;
+\item \textbf{packages}, un metodo in cui è salvato il progetto (JAR,WAR,ZIP,ecc…).
+\end{itemize}
+
+\noindent Nel file si possono notare le seguenti dipendenze:
+\begin{itemize}
+\item \textit{spring-boot-starter-web}, per utilizzare il framework Spring MVC per la creazione di applicazioni Web;
+\item \textit{spring-boot-starter-jpa}, per la persistenza dei dati;
+\item \textit{spring-boot-devtools}, offre tools per migliorare il processo di sviluppo come live reload e rilascio automatico;
+\item \textit{spring-boot-starter-test}, per includere librerie di testing.
+\end{itemize}
+Rispetto al file utilizzato nel progetto mancano le seguenti dipendenze:
+\begin{itemize}
+\item \textit{Dipendenza 1}
+\item \textit{Dipendenza 2}
+\end{itemize}
+
+\begin{lstlisting}[language=XML,caption = pom.xml con dipendenze selezionate]
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.1.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>demo</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+\end{lstlisting}
+
