@@ -1,0 +1,13 @@
+\section{Progettazione del database}
+\subsection{Configurazione di Docker}
+I container Docker offrono un'isolamento completo dell'ambiente, che aiuta a evitare conflitti di dipendenze e interferenze con altre applicazioni o servizi che potrebbero essere presenti sul sistema. Per questo motivo si è deciso di utilizzare l'approccio di sandboxing\textsubscript{g} che offre Docker, poichè l'utilizzo di container consente di isolare le applicazioni e i servizi in ambienti virtualizzati, condividendo il kernel del sistema operativo host ma separando le loro risorse e i loro processi.\\
+Successivamente, dato che le tabelle di mia creazione dovevano integrarsi con il database aziendale, tramite il tool Docker Compose\textsubscript{g} e un file di configurazione \textit{docker-compose.yaml}, è stato possibile avviare un nuovo container contenete un'immagine di Microsoft SQL Server, che forniva un backup del database aziendale con dati e tabelle.\\
+
+\subsection{Modello dati}
+\textbf{IMMAGINE UML SENZA ATTRIBUTI}\\
+
+\noindent Nel seguente disegno si può notare il database su cui poggia l'API.\\
+È stata inserita una nomenclatura <<esterna>> per indicare le tabelle proveniente dal database aziendale.\\
+Di seguito elenco le tabelle da me create, spiegandone l'utilizzo e gli attributi:\\
+
+\noindent \textbf{TUTTE LE TABELLE MIE}\\
