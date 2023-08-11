@@ -1,1 +1,25 @@
 \section{Architettura REST}
+L’architettura REST, acronimo di “Representational State Transfer”, è un approccio di progettazione per la creazione di servizi web che si basa sui principi dell’HTTP (Hypertext Transfer Protocol).\\
+Le principali caratteristiche di un’architettura REST includono:
+\begin{itemize}
+\item \textbf{Sistema client-server}, dove il client è chi fa le richieste e il server fornisce le risposte;
+\item \textbf{Sistema layered}, in quanto queste architetture REST possono essere composte da più livelli di servizi indipendenti;
+\item \textbf{Stateless}, significa che il server non contiene client state, quindi ogni richiesta ha abbastanza informazione per il server per processarla;
+\item \textbf{Cacheable}, significa che l’architettura può memorizzare le risposte dei server e riutilizzarle;
+\item \textbf{Resource-based}: questo approccio è considerato tale, dato che si concentra sull’identificazione e la gestione delle risorse all’interno di un sistema. Le risorse vengono identificate da degli URI ed esse possono essere create,aggiornate,richieste o eliminate (operazioni CRUD) attraverso operazioni HTTP standard (POST,PUT,GET,DELETE);
+\item \textbf{Rappresentazioni}, poichè le risorse sono diverse dalla loro rappresentazione logica, utilizzando formati come JSON o XML.
+\end{itemize}
+Questo stile architetturale è utilizzato soprattutto per la realizzazione di API poichè l'adozione dei principi standard di HTTP mantiene un'interfaccia uniforme e l'approccio resource-based ne semplifica la progettazione, dato che le risorse vengono identificate da URI\textsubscript{g}.
+
+\subsection{Convenzioni REST}
+Buona prassi nella creazione di un'API REST è il rispetto di convenzioni per la nomenclatura degli endpoint\textsubscript{g}. Sebbene non esista un'unica convenzione obbligatoria, esistono delle best practices per garantire una facile lettura e comprensibilità per agevolare gli sviluppatori che adoperano l'API.\\
+Le seguenti convenzioni sono state rispettate nella progettazione dell'API:
+\begin{itemize}
+\item  pluralizzare le risorse, per distinguere se si fa riferimento ad una lista di una determinata risorsa o ad una singola risorsa;
+\item usare lettere minuscole;
+\item non usare estensioni dei file;
+\item in caso di nomi composti utilizzare il "-";
+\item non usare underscore;
+\item non utilizzare abbreviazioni o slang;
+\item non utilizzare verbi, poichè l'azione dovrebbe essere indicata dal metodo HTTP utilizzato.
+\end{itemize}
