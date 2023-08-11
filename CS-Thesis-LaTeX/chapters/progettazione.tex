@@ -21,13 +21,16 @@ Dopo aver selezionato le dipendenze, l'utente può scaricare il progetto Spring 
 
 \subsection{File di configurazione}
 Il file ZIP scaricato precedentemente contiene tutti i file necessari per iniziare a lavorare sul progetto, inclusi i file di configurazione.
-Di seguito riporto il file pom.xml che si ottiene creando un progetto con le dipendenze sopra selezionate. La configurazione di Maven avviene proprio tramite questo file.\\
-All'interno di questo file si possono trovare tag di questo tipo:
+Di seguito riporto il file \textit{pom.xml} che si ottiene creando un progetto con le dipendenze sopra selezionate. La configurazione di Maven avviene proprio tramite questo file.\\
+All'interno di questo file si possono trovare i seguenti tag:
 \begin{itemize}
-\item \textbf{groupId}, organizzazione che ha creato il progetto;
-\item \textbf{artifactId}, nome unico del progetto;
-\item \textbf{version},  versione del progetto;
-\item \textbf{packages}, un metodo in cui è salvato il progetto (JAR,WAR,ZIP,ecc…).
+\item \textit{<dependecies>}, indica una lista di dipendenze;
+\item \textit{<build>}, contiene impostazioni di costruzione e compilazione;
+\item \textit{<plugins>}, contiene plugin di Maven;
+\item \textit{<properties>}, contiene proprietà definite dall'utente;
+\item \textit{<groupId>}, organizzazione che ha creato il progetto;
+\item \textit{<artifactId>}, nome unico del progetto;
+\item \textit{<version>},  versione del progetto.
 \end{itemize}
 
 \noindent Nel file si possono notare le seguenti dipendenze:
@@ -39,8 +42,9 @@ All'interno di questo file si possono trovare tag di questo tipo:
 \end{itemize}
 Rispetto al file utilizzato nel progetto mancano le seguenti dipendenze:
 \begin{itemize}
-\item \textit{Dipendenza 1}
-\item \textit{Dipendenza 2}
+\item \textit{Dipendenza 1};
+\item \textit{Dipendenza 2};
+\item \textit{Dipendenza 3}.
 \end{itemize}
 
 \begin{lstlisting}[language=XML,caption = pom.xml con dipendenze selezionate]
@@ -96,4 +100,41 @@ Rispetto al file utilizzato nel progetto mancano le seguenti dipendenze:
 
 </project>
 \end{lstlisting}
+\pagebreak
+
+\noindent Il secondo file di configurazione è \textit{application.properties}. Di seguito riporto il file che ho utilizzato nel progetto:
+\begin{lstlisting}[language = XML, caption = application.properties del progetto]
+logging.level.root=INFO
+logging.level.org.springframework=ERROR
+logging.level.org.hibernate=TRACE
+logging.level.it.omicronconsulting=DEBUG
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+
+
+spring.datasource.url=jdbc:sqlserver://localhost;databaseName=DBDELIVERONE;Trusted_Connection=False;\MultipleActiveResultSets=true;encrypt=true;trustServerCertificate=true;
+spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.datasource.username=SA
+spring.datasource.password=Password.1
+
+
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+spring.jpa.hibernate.ddl-auto=validate
+
+springdoc.swagger-ui.filter=true
+springdoc.swagger-ui.tagsSorter=alpha
+\end{lstlisting}
+Possiamo notare come il file utilizzi un formato di configurazione basato su chiavi e valori. Le chiavi rappresentano le diverse proprietà di configurazione dell'applicazione, mentre i valori rappresentano le impostazioni specifiche.\\
+Nel file possiamo notare le seguenti chaivi:
+\begin{itemize}
+\item \textit{logging.level}, servono per configurare il livello di dettaglio dei log per diverse classi o package all'interno dell'applicazione;
+\item \textit{spring.datasource}, servono per collegarsi ad un database, in questo caso locale, inserendo username e password e driver di MSSQL;
+\item \textit{spring.jpa.hibernate} e \textit{spring.jpa.properties.hibernate}, servono per configurare le impostazioni di Hibernate, impostando la validazione schema-entità, il dialetto\textsubscript{g} del server SQL e il suo livello di log;
+\item \textit{springdoc.swagger-ui}, libreria che fornisce integrazione tra Spring Boot e Swagger UI.  
+\end{itemize}. 
+
+\section{Progettazione del database}
+\subsection{Configurazione di Docker}
+I container Docker offrono un'isolamento completo dell'ambiente, che aiuta a evitare conflitti di dipendenze e interferenze con altre applicazioni o servizi che potrebbero essere presenti sul sistema. Per questo motivo si è deciso di utilizzare la tecnica di sandboxing che offre Docker, poichè l'utilizzo di container consente di isolare le applicazioni e i servizi in ambienti virtualizzati, che condividono il kernel del sistema operativo host ma sono separati per quanto riguarda le risorse e i processi.\\
 
