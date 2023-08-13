@@ -1,0 +1,27 @@
+\section{Design Pattern}
+\label{cap:design pattern}
+Nel prodotto sviluppato possiamo notare i seguenti Design Pattern.
+Ad eccezione dell'ultimo Design Pattern adottato, in riferimento all'elenco sottostante, i restanti Design Pattern sono già implementati da Spring e Spring Boot.
+\subsection*{Repository pattern}
+Repository è un pattern ideato per dividere le operazioni di business logic da quelle di persistenza dei dati. Questo pattern fornisce astrazione ai dati nascondendo i dettagli di accesso, facilita il testing, supporta diverse sorgenti di dati e mantiene un codice riutilizzabile in quanto non sarà necessario modificare ampiamente il codice in caso di modifiche alla sorgente dati.\\
+In Spring Boot vengono implementate interfacce annotandole con  l'annotazione \textit{@Repository} ed estendendole con interfacce JPA che permettono l'utilizzo di metodi che forniscono query basilari o la possibilità di creare metodi custom per query personalizzate.
+\subsection*{Dependecy Injection}
+Dependency Injection è un pattern che inietta una dipendenza in una classe senza sapere l'implementazione effettiva. Questo può avvenire attraverso constructor injection, setter injection o method injection. Gli obiettivi di questo pattern sono: eliminare il forte accoppiamento tra le classi, rendere il codice più manutenibile e più facile da testare.\\
+In Spring Boot risulta evidente tramite l'utilizzo di annotazioni come \textit{@Autowired}, iniettando direttamente le dipendenze necessarie, promuovendo il concetto successivo di Inversion of Control;
+\subsection*{Inversion of Control}
+Inversion of Control (IoC) è un design pattern nato sul concetto di invertire il controllo del flusso del sistema nella gestione delle dipendenze e del controllo interno di un'applicazione. Normalmente è l'applicazione che controlla le dipendenze o il flusso di esecuzione, ma questa responsabilità, utilizzando questo pattern, viene trasferita ad un framework. Il framework instanzierà oggetti, inietterà le dipendenze e coordinerà il flusso di esecuzione.\\
+Spring Boot è costruito proprio su questo concetto chiave. Esso è correlato a IoC per i seguenti motivi:
+\begin{itemize}
+\item Component scan, esegue automaticamente uno scan delle classi individuando quelle contrassegnate con annotazioni come \textit{@Service}, \textit{@Repository}, \textit{@Controller} e altre;
+\item Semplifica la gestione delle dipendenze, fornendo degli insiemi di dipendenze utili per determinate tecnologie sotto il nome di "starters", velocizzando l'inizializzazione delle dipendenze senza doverle configurare manualmente, fornendo un senso di controllo sulla configurazione iniziale;
+\item Dependency Injection;
+\item Application Context, agisce come contenitore per i bean\textsubscript{g} dell'applicazione. Esso gestisce i loro cicli di vita e inietta le dipendenze nei punti appropriati.
+\end{itemize}
+\subsection*{Data Transfer Object}
+Data Transfer Object (DTO) è un pattern utilizzato per gestire il trasferimento dei dati tra client e server. Gli obiettivi principali del pattern sono:
+\begin{itemize}
+\item Sicurezza, in quanto puoi controllare cosa si invia;
+\item Flessibilità, puoi adattare i DTO in base alle esigenze dell'API;
+\item Separano la rappresentazione interna da quella esterna dei dati.
+\end{itemize}
+Nel contesto di una API REST, i DTO vengono utilizzati sia nella Request che nella Response. Vengono utilizzati in entrambi i punti perchè quando il client invia dei dati magari non necessita degli oggetti completi ma solo di alcune informazioni. Invece quando il server restituisce dei dati il client se li può aspettare sotto una determinata struttura.\\

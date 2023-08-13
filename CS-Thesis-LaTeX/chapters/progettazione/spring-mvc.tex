@@ -1,27 +1,38 @@
 \section{Spring MVC}
-Nello sviluppo di una API REST tramite Spring Boot è comune l'utilizzo dell'architettura Model-View-Controller(MVC).\\
+Nello sviluppo di una API REST tramite Spring Boot è comune l'utilizzo del pattern architetturale Model-View-Controller(MVC).\\
 
 %\begin{figure}[!h] 
 %    \centering 
-%    \includegraphics[width=0.95\columnwidth]{Spring_initializr} 
-%    \caption{Interfaccia Spring Initializr}
+%    \includegraphics[width=0.95\columnwidth]{foto_mvc} 
+%    \caption{Schema Model-View-Controller}
 %\end{figure}
 \textbf{FOTO MVC}\\
 
 \subsection{Model}
-Rappresenta i dati e la business logic\textsubscript{g} dell'applicazione.\\
-Nel contesto dello sviluppo di un'API REST, il Model contiene risorse come oggetti di dominio o dati provenienti da una fonte esterna come un database.\\
+Il Modello o Model in inglese,appresenta i dati e i metodi per accedere ai dati dell'applicazione. Se esso viene aggiornato in seguito ad azioni o eventi, notificherà la View e il Controller del cambiamento.\\
+Nel contesto dello sviluppo di un'API REST, il Model contiene dati che vengono elaborati e restituiti dall'API.\\
 All'interno del progetto il Model è formato dai seguenti elementi.
 \subsubsection{Entità}
-In Spring Boot il Model contiene le classi Java segnate con l'annotazione \textit{@Entity} che identifica che quella classe è mappata ad una tabella del database e contiene dati specifici della tabella.
+Le entità sono risorse rappresentate con classi Java segnate con l'annotazione\textsubscript{g} \textit{@Entity}. Utilizzando questa annotazione si identifica che quella classe è mappata\textsubscript{g} ad una tabella del database. Esse dichiarano al loro interno, tramite annotazioni JPA apposite come \textit{@Id} e \textit{@Column}, gli attributi corrispondenti alla tabella a cui fa riferimento. Per mantenere le relazioni presenti nel database tra le tabelle,nelle entità si utilizzano anche annotazioni del tipo \textit{@OneToMany},\textit{@ManyToMany} e altre.
 \subsubsection{Repository}
-Le repository implementate nel progetto gestiscono l'accesso ai dati e definiscono metodi per eseguire operazioni di base sui dati, come l'inserimento, la modifica, la cancellazione e la ricerca. Tutto questo estendendo interfacce JPA, come \textit{JPARepository}, che consentono di eseguire operazioni in una base di dati senza scrivere codice SQL o query.
+Le repository implementate nel progetto gestiscono l'accesso ai dati e definiscono metodi per eseguire operazioni di base sui dati, come l'inserimento, la modifica, la cancellazione e la ricerca. Tutto questo estendendo interfacce JPA, che consentono di eseguire operazioni in una base di dati senza scrivere codice SQL o query.
 \subsubsection{DTO}
 Data Transfer Object (DTO), oggetti utilizzati per modellare le rappresentazioni dei dati, utilizzati per definire sia i dati inviati dal client nelle requests che quelli che inviati dal server al cliente nelle responses.
 
 \subsection{View}
+La Vista o View in inglese, è responsabile di mostrare i dati provenienti dal Model e dell'interazione con l'utente. Essa cattura gli input dell'utente e delega al Controller l'elaborazione.\\
+Dato che il progetto si concentrava sul lato back-end, precisamente sullo sviluppo dell'API REST, non ho quindi sviluppato una vera e propria View, poichè l'output è in formato JSON. In questo contesto l'output prodotto contenente i dati presentati al client in formato JSON, potrebbe essere considerata come "View".
 
 \subsection{Controller}
+Il Controller gestisce il flusso dell'applicazione. Esso riceve i comandi dell'utente attraverso la View e reagisce eseguendo operazioni conseguenti. Queste sue operazioni possono o meno coinvolgere il Model, ma portano generalmente sempre ad un cambiamento di stato della View.\\
+All'interno del meccanismo di Spring MVC il Controller gestisce le richieste HTTP in arrivo, selezionando il Controller adeguato e assegnato a quell'endpoint API. Sono quindi responsabili di ricevere le richieste, elaborarle e restituire le risposte corrispondenti.\\
+Per identificare il metodo associato ad una determinata operazione HTTP, vengono utilizzate le seguenti annotazioni \textit{@PostMapping}, \textit{@GetMapping}, \textit{@PutMapping}, \textit{@PatchMapping} e \textit{@DeleteMapping}. Internamente a questi metodi viene richiamato il Service appropriato per eseguire operazioni utili al risultato finale da restituire.\\
+Per garantire che i dati inseriti dagli utenti o provenienti da richieste siano conformi alle aspettative e non causino errori vengono inseriti dei controlli di validazioni all'interno dei metodi del Controller.\\
+All'interno del progetto il Controller è formato dai seguenti elementi.
+\subsubsection{Service}
+I Service eseguono operazioni complesse ed elaborazioni di dati, gestendo la business logic dell'applicazione. Essi interagiscono con i Repository per recuperare dati dal database e vengono richiamati all'interno dei metodi del Controller.
+\subsubsection{Exception Handler}
+Per centralizzare la gestione delle eccezioni è stato creato un handler che garantisce uniformità alle eccezioni che l'applicazione può produrre.
 
 %\begin{itemize}
 %\item Entità, corrispondono a classi Java annotate con \textit{@Entity} 
