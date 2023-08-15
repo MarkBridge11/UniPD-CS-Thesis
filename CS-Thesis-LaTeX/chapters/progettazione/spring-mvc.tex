@@ -13,15 +13,15 @@ Il Modello o Model in inglese,appresenta i dati e i metodi per accedere ai dati 
 Nel contesto dello sviluppo di un'API REST, il Model contiene dati che vengono elaborati e restituiti dall'API.\\
 All'interno del progetto il Model è formato dai seguenti elementi.
 \subsubsection{Entità}
-Le entità sono risorse rappresentate con classi Java segnate con l'annotazione\textsubscript{g} \textit{@Entity}. Utilizzando questa annotazione si identifica che quella classe è mappata\textsubscript{g} ad una tabella del database. Esse dichiarano al loro interno, tramite annotazioni JPA apposite come \textit{@Id} e \textit{@Column}, gli attributi corrispondenti alla tabella a cui fa riferimento. Per mantenere le relazioni presenti nel database tra le tabelle,nelle entità si utilizzano anche annotazioni del tipo \textit{@OneToMany},\textit{@ManyToMany} e altre.
+Le entità sono risorse rappresentate con classi Java segnate con l'annotazione\textsubscript{g} \textit{@Entity}. Utilizzando questa annotazione si identifica che quella classe è mappata\textsubscript{g} ad una tabella del database. Esse dichiarano al loro interno, tramite annotazioni JPA apposite, gli attributi corrispondenti alla tabella a cui fa riferimento e, altre annotazioni per mantenere le relazioni presenti nel database tra le tabelle.
 \subsubsection{Repository}
 Le repository implementate nel progetto gestiscono l'accesso ai dati e definiscono metodi per eseguire operazioni di base sui dati, come l'inserimento, la modifica, la cancellazione e la ricerca. Tutto questo estendendo interfacce JPA, che consentono di eseguire operazioni in una base di dati senza scrivere codice SQL o query.
 \subsubsection{DTO}
-Data Transfer Object (DTO), oggetti utilizzati per modellare le rappresentazioni dei dati, utilizzati per definire sia i dati inviati dal client nelle requests che quelli che inviati dal server al cliente nelle responses.
+Data Transfer Object (DTO), oggetti utilizzati per modellare le rappresentazioni dei dati, utilizzati per definire sia i dati inviati dal client nelle requests che quelli che inviati dal server al cliente nelle responses.\\
 
 \subsection{View}
 La Vista o View in inglese, è responsabile di mostrare i dati provenienti dal Model e dell'interazione con l'utente. Essa cattura gli input dell'utente e delega al Controller l'elaborazione.\\
-Dato che il progetto si concentrava sul lato back-end, precisamente sullo sviluppo dell'API REST, non ho quindi sviluppato una vera e propria View, poichè l'output è in formato JSON. In questo contesto l'output prodotto contenente i dati presentati al client in formato JSON, potrebbe essere considerata come "View".
+Dato che il progetto si concentrava sul lato back-end, precisamente sullo sviluppo dell'API REST, non ho quindi sviluppato una vera e propria View, poichè l'output è in formato JSON. In questo contesto l'output prodotto contenente i dati presentati al client in formato JSON, potrebbe essere considerata come "View".\\
 
 \subsection{Controller}
 Il Controller gestisce il flusso dell'applicazione. Esso riceve i comandi dell'utente attraverso la View e reagisce eseguendo operazioni conseguenti. Queste sue operazioni possono o meno coinvolgere il Model, ma portano generalmente sempre ad un cambiamento di stato della View.\\
@@ -33,11 +33,3 @@ All'interno del progetto il Controller è formato dai seguenti elementi.
 I Service eseguono operazioni complesse ed elaborazioni di dati, gestendo la business logic dell'applicazione. Essi interagiscono con i Repository per recuperare dati dal database e vengono richiamati all'interno dei metodi del Controller.
 \subsubsection{Exception Handler}
 Per centralizzare la gestione delle eccezioni è stato creato un handler che garantisce uniformità alle eccezioni che l'applicazione può produrre.
-
-%\begin{itemize}
-%\item Entità, corrispondono a classi Java annotate con \textit{@Entity} 
-%\end{itemize}
-%\subsection*{View}
-%dawkodakwpdawdaokdkpaw.\\
-%\subsection*{Controller}
-%djaopdwkwdkkdw.\\
