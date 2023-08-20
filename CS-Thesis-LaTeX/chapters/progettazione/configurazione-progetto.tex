@@ -12,9 +12,15 @@ L'utente può selezionare il tipo di progetto di cui ha bisogno, come ad esempio
 Una volta selezionate le opzioni desiderate, l'utente può scegliere le dipendenze per il progetto. Le dipendenze sono librerie di terze parti che forniscono funzionalità aggiuntive al progetto.\\
 Dopo aver selezionato le dipendenze, l'utente può scaricare il progetto Spring Boot personalizzato in formato ZIP. 
 
-\subsection{File di configurazione}
-Il file ZIP scaricato precedentemente contiene tutti i file necessari per iniziare a lavorare sul progetto, inclusi i file di configurazione.
-Di seguito riporto il file \textit{pom.xml} che si ottiene creando un progetto con le dipendenze sopra selezionate. La configurazione di Maven avviene proprio tramite questo file.\\
+\subsection{Contenuto del pacchetto}
+Il file ZIP scaricato precedentemente contiene tutti i file necessari per iniziare a lavorare sul progetto. All'interno di questo pacchetto troviamo i seguenti elementi rilevanti:
+\begin{itemize}
+\item file di configurazione \textit{application.properties} e file di build \textit{pom.xml} con le dipendenze selezionate e scaricate;
+\item classe principale, con lo stesso nome del progetto. Essa rappresenta il punto di ingresso dell'applicazione ed è annotata con \textit{@SpringBootApplication}. Il metodo main() al suo interno avvierà l'applicazione Spring;
+\item un Controller d'esempio per mostrare come gestire le richieste HTTP;
+\item una struttura base dei package.
+\end{itemize}
+Di seguito riporto il file di build \textit{pom.xml} che si ottiene creando un progetto con le dipendenze sopra selezionate. La configurazione di Maven avviene proprio tramite questo file.\\
 All'interno di questo file si possono trovare i seguenti tag:
 \begin{itemize}
 \item \textit{<dependecies>}, indica una lista di dipendenze;
@@ -94,7 +100,7 @@ Rispetto al file utilizzato nel progetto mancano le seguenti dipendenze:
 </project>
 \end{lstlisting}
 
-\noindent Il secondo file di configurazione è \textit{application.properties}. Di seguito riporto il file che ho utilizzato nel progetto:
+\noindent Il secondo file qui sotto rappresentato è il file configurazione \textit{application.properties}. Di seguito riporto il file che ho utilizzato nel progetto:
 \begin{lstlisting}[language = XML, caption = application.properties del progetto]
 logging.level.root=INFO
 logging.level.org.springframework=ERROR
