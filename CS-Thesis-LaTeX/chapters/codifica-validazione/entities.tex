@@ -1,8 +1,15 @@
 \subsection{Entities}
 
-\texttt{FOTO DELLE ENTITA}\\
+\texttt{FOTO DEI PACKAGE ENTITA}\\
 
-\noindent \texttt{FOTO ENTITA COMPLESSA}\\
+\noindent All'interno del package Entities troviamo le entità.\\
+Per entità si intendono tutte quelle classi Java che definiscono i modelli di dati dell'applicazione. Queste classi vengono annotate con le seguenti annotazioni JPA utili a stabilire come la classe venga associata a una tabella presente nel database relazionale. Ogni istanza di un'entità rappresenta una riga nella tabella relativa.
+\begin{itemize}
+\item \textit{@Entity}, per mappare le classi Java che rappresentano una tabella in un database si inserisce questa notazione specificando a class level\textsubscript{g}.
+\item \textit{@Table}, nella maggior parte dei casi il nome di una tabella nel database e il nome dell'entità non sono gli stessi. Per questo motivo è stata utilizzata la seguente annotazione per specificare il nome della tabella.
+\end{itemize} 
+
+\noindent \texttt{FOTO ENTITA ELABORATA}\\
 
 \noindent Spiegazione annotazioni.\\
 
