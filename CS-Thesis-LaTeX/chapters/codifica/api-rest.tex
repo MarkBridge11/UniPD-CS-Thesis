@@ -5,16 +5,20 @@ I verbi standard forniti da HTTP utilizzati applicati all'API REST sono i seguen
 \setlength{\arrayrulewidth}{0.3mm}
 \renewcommand{\arraystretch}{2.5}
 \begin{center}
+\rowcolors{1}{white}{mygray}
 \begin{longtable}{p{2cm}|p{8cm}}
-\textbf{Verbo}  & \textbf{Descrizione} \\ \midrule
-\rowcolor{mygray} 
+\textbf{Verbo}  & \textbf{Descrizione}\\
+\hline
+%\rowcolor{mygray} 
 POST   & Utilizzato per inviare dati al server al fine di creare una nuova risorsa ed aggiungerla all'insieme corrente\\
 GET    & Utilizzato per richiedere dati al server in merito ad una o più risorse senza modificarle          \\
-\rowcolor{mygray}
+%\rowcolor{mygray}
 DELETE &   Utilizzato per eliminare una risorsa specifica dal server          \\
 PUT    &   Utilizzato per aggiornare totalmente una risorsa e viene utilizzato quando si vuole sostituire completamente una risorsa          \\
-\rowcolor{mygray}
-PATCH  &     Utilizzato per effettuare aggiornamenti parziali a una risorsa esistente        \\ \bottomrule
+%\rowcolor{mygray}
+PATCH  &     Utilizzato per effettuare aggiornamenti parziali a una risorsa esistente        \\ 
+\hline
+\hiderowcolors
 \caption{Verbi Standard HTTP utilizzati}
 \label{tab:verbi-http}
 \end{longtable}

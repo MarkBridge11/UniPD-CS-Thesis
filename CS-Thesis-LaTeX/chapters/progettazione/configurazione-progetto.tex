@@ -19,6 +19,7 @@ Il file ZIP scaricato precedentemente contiene tutti i file necessari per inizia
 \item classe principale, rappresenta il punto di ingresso dell'applicazione ed è annotata con \textit{@SpringBootApplication}. Il metodo \texttt{main()} al suo interno avvierà l'applicazione Spring;
 \item una struttura base dei package.
 \end{itemize}
+\subsubsection{Pom.xml}
 Di seguito riporto uno snippet\textsubscript{g} del file di build \textit{pom.xml} che si ottiene creando un progetto con le dipendenze sopra selezionate. La configurazione di Maven avviene proprio tramite questo file.\\
 All'interno di questo file si possono trovare i seguenti tag:
 \begin{itemize}
@@ -38,17 +39,29 @@ All'interno di questo file si possono trovare i seguenti tag:
 \item \textit{spring-boot-devtools}, offre tools per migliorare il processo di sviluppo come live reload e rilascio automatico;
 \item \textit{spring-boot-starter-test}, per includere librerie di testing.
 \end{itemize}
-Rispetto al file utilizzato nel progetto mancano le seguenti dipendenze:
-\begin{itemize}
-\item \textit{Dipendenza 1};
-\item \textit{Dipendenza 2};
-\item \textit{Dipendenza 3}.
-\end{itemize}
+
 \begin{figure}[H] 
     \centering 
     \includegraphics[width=0.85\columnwidth]{foto_pom_base} 
     \caption{Snippet pom.xml generato}
 \end{figure}
+
+Rispetto al file utilizzato nel progetto mancano le seguenti dipendenze:
+\begin{itemize}
+\item \textit{spring-boot-starter-jdbc}, per avviare Spring con il supporto JDBC nel progetto;
+\item \textit{mssql-jdbc}, contenente il driver JDBC di Microsoft SQL Server;
+\item \textit{springdoc-openapi-starter-webmvc-ui}, dipendenza per l'integrazione di Springdoc OpenAPI con Spring Boot per generare la documentazione dell'API utilizzando l'interfaccia utente WebMvc UI;
+\item \textit{poi} e \textit{poi-ooxml}, due dipendenze relative ad Apache POI che offre funzionalità per poter lavorare con documenti Microsoft Office;
+\item \textit{jxls-jexcel}, dipendenza che include la libreria jXLS per creare e manipolare documenti Excel;
+\item \textit{fastexcel} e \textit{fastexcel-reader}, altre dipendenze inerenti a file Excel che offrono funzionalità per lettura,scrittura e modifica di questi file.
+\end{itemize}
+Per il testing sono state aggiunte:
+\begin{itemize}
+\item \textit{junit}, framework usato in Java per scrivere test unitari;
+\item \textit{hamcrest-library}, libreria utile a scrivere asserzioni più espressive e comprensibili nei test unitari;
+\item \textit{h2}, si tratta della dipendenza per la libreria H2 Database Engine, che è un database SQL. Utilizzato con scope "test" per crearne un'istanza temporanea e utilizzarlo nei test.
+\end{itemize}
+
 %\begin{lstlisting}[language=XML,caption = pom.xml con dipendenze selezionate]
 %	<properties>
 %		<java.version>17</java.version>
@@ -87,6 +100,7 @@ Rispetto al file utilizzato nel progetto mancano le seguenti dipendenze:
 %
 %\end{lstlisting}
 
+\subsubsection{Application.properties}
 \noindent Il secondo file qui sotto rappresentato è il file configurazione \textit{application.properties}. Di seguito riporto il file che ho utilizzato nel progetto:
 \begin{figure}[H] 
     \centering 
@@ -115,11 +129,11 @@ Rispetto al file utilizzato nel progetto mancano le seguenti dipendenze:
 %springdoc.swagger-ui.filter=true
 %springdoc.swagger-ui.tagsSorter=alpha
 %\end{lstlisting}
-Possiamo notare come il file utilizzi un formato di configurazione basato su chiavi e valori. Le chiavi rappresentano le diverse proprietà di configurazione dell'applicazione, mentre i valori rappresentano le impostazioni specifiche.\\
+\noindent Possiamo notare come il file utilizzi un formato di configurazione basato su chiavi e valori. Le chiavi rappresentano le diverse proprietà di configurazione dell'applicazione, mentre i valori rappresentano le impostazioni specifiche.\\
 Nel file possiamo notare le seguenti chaivi:
 \begin{itemize}
 \item \textit{logging.level}, servono per configurare il livello di dettaglio dei log per diverse classi o package all'interno dell'applicazione;
 \item \textit{spring.datasource}, servono per collegarsi ad un database, in questo caso locale, inserendo username e password e driver di MSSQL;
-\item \textit{spring.jpa.hibernate} e \textit{spring.jpa.properties.hibernate}, servono per configurare le impostazioni di Hibernate, impostando la validazione schema-entità, il dialetto\textsubscript{g} del server SQL e il suo livello di log;
+\item \textit{spring.jpa.properties.hibernate}, serveono per configurare le impostazioni di Hibernate, impostando la validazione schema-entità, il dialetto\textsubscript{g} del server SQL e il suo livello di log;
 \item \textit{springdoc.swagger-ui}, libreria che fornisce integrazione tra Spring Boot e Swagger UI.  
 \end{itemize}. 

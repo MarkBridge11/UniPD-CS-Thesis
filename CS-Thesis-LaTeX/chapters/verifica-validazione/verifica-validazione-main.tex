@@ -4,11 +4,15 @@
 Questo capitolo descrive come è stata attuata la verifica e la validazione all'interno del progetto. Grazie al processo di verifica garantiamo che ogni attività dei processi svolti non introduca errori nel prodotto e che soddisfi i requisiti. Mentre con il processo di validazione viene determinato in maniera oggettiva che il prodotto sia conforme ai requisiti richiesti.
 \section{Processo di verifica}
 Durante tutto il periodo di tirocinio, ad ogni avanzamento di funzionalità e quindi cambio di requisito da soddisfare, con il tutor Antonio Fasolato è stato verificato che il codice sviluppato fino a quel momento fosse conforme con quanto aspettato e producesse output veritieri. Questo era aiutato inoltre dai controlli di validazione effettuati nei vari Controller e ulteriori controlli inseriti nei Service per garantire l’utilizzo di valori corretti.\\
-Veniva effettuata dapprima un’analisi statica sul codice prodotto, eseguendo una lettura mirata focalizzandoci sugli errori più noti e probabili, andando verso errori più specifici in base alla funzionalità implementata.\\
-Con l'ausilio di Postman veniva poi richiesto l'endpoint in analisi e si osservava la response per verificare che fosse conforme alle attese e in caso di errori veniva eseguita un’ulteriore verifica successivamente alla mia correzione dell’errore presentatosi.\\
-Svolgendo questa analisi regolarmente è stato possibile identificare e correggere errori evitando la loro propagazione nel corso della Codifica.
+Svolgendo le seguenti analisi regolarmente è stato possibile identificare e correggere errori evitando la loro propagazione nel corso della Codifica.
+\subsection{Analisi statica}
+Veniva effettuata un’analisi statica, che non richiede l'esecuzione del software, sul codice prodotto, eseguendo prima un inspection, una lettura mirata e focalizzata sugli errori più noti e probabili, andando verso errori più specifici in base alla funzionalità implementata.
+\subsection{Analisi dinamica}
+L'analisi dinamica consiste nell'effettuare test sul prodotto in esecuzione ed è stata eseguita nei seguenti modi.\\
+Per identificare al meglio un errore a run-time veniva usata la tecnica di debugging: consiste nell'individuazione e la correzione di errori che provocano anomalie rilevate durante l'esecuzione del programma. Questa tecnica è possibile grazie allo strumento di debugging che offre IntelliJ che permette di inserire dei breakpoint, cioè dei punti di interruzione nel codice, che non appena raggiunti durante l'esecuzione, sospende l'esecuzione ed è possibile ispezionare lo stato delle variabili, delle strutture dati e lo stack trace delle chiamate.\\ 
+Per testare l'API veniva utilizzato il software Postman. Esso permetteva di osservare la response dell'endpoint in analisi per verificare che fosse conforme alle attese e in caso di errore veniva eseguita un’ulteriore verifica successivamente alla mia correzione dell’errore che si era presentato.\\
 
-\section{Testing - Test di Unità}
+\section{Testing}
 Per garantire la sicurezza e l’affidabilità, negli ultimi giorni di tirocinio, sono stati introdotti i test di unità.\\
 Questo processo è iniziato con lo studio dei framework JUnit e Mockito.\\
 I test di unità verificano il funzionamento corretto di singole unità di codice, come metodi o classi. Questi test vengono sviluppati isolandosi dalle dipendenze esterne permettendo di verificare che il codice funzioni correttamente e che produca risultati attesi.\\
