@@ -11,7 +11,7 @@ Per cominciare è stato creato un \texttt{Dockerfile} nella root del progetto. Q
     \includegraphics[width=0.80\columnwidth]{dockerfile} 
     \caption{Configurazione Dockerfile}
 \end{figure}
-\noindent All'interno del file, possiamo notare due sezioni separate, quella di build e quella di esecuzione o run.
+\noindent All'interno del file, possiamo notare due sezioni separate, quella di build e quella di run (esecuzione).
 \subsubsection*{Sezione Build}
 Nella sezione di "build" viene indicato che si sta costruendo un'immagine di Docker basata su Maven 3.9.3 e Java 17. Vengono poi eseguite operazioni relative alla compilazione dell'applicazione, come la copia del file sorgente, la verifica delle dipendenze tramite il tool di build Maven e la crazione del pacchetto \texttt{.jar}.
 \subsubsection*{Sezione Run}

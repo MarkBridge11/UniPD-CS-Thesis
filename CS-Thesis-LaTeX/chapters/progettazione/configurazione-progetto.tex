@@ -15,9 +15,8 @@ Dopo aver selezionato le dipendenze, l'utente può scaricare il progetto Spring 
 \subsection{Contenuto del pacchetto}
 Il file ZIP scaricato precedentemente contiene tutti i file necessari per iniziare a lavorare sul progetto. All'interno di questo pacchetto troviamo i seguenti elementi rilevanti:
 \begin{itemize}
-\item file di configurazione \textit{application.properties} e file di build \textit{pom.xml} con le dipendenze selezionate e scaricate;
+\item file di configurazione \textit{application.properties} e file di build \textit{pom.xml} con le dipendenze selezionate;
 \item classe principale, rappresenta il punto di ingresso dell'applicazione ed è annotata con \textit{@SpringBootApplication}. Il metodo \texttt{main()} al suo interno avvierà l'applicazione Spring;
-\item un Controller d'esempio per mostrare come gestire le richieste HTTP;
 \item una struttura base dei package.
 \end{itemize}
 Di seguito riporto uno snippet\textsubscript{g} del file di build \textit{pom.xml} che si ottiene creando un progetto con le dipendenze sopra selezionate. La configurazione di Maven avviene proprio tramite questo file.\\
@@ -45,68 +44,77 @@ Rispetto al file utilizzato nel progetto mancano le seguenti dipendenze:
 \item \textit{Dipendenza 2};
 \item \textit{Dipendenza 3}.
 \end{itemize}
-
-\begin{lstlisting}[language=XML,caption = pom.xml con dipendenze selezionate]
-	<properties>
-		<java.version>17</java.version>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
-\end{lstlisting}
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width=0.85\columnwidth]{foto_pom_base} 
+    \caption{Snippet pom.xml generato}
+\end{figure}
+%\begin{lstlisting}[language=XML,caption = pom.xml con dipendenze selezionate]
+%	<properties>
+%		<java.version>17</java.version>
+%	</properties>
+%	<dependencies>
+%		<dependency>
+%			<groupId>org.springframework.boot</groupId>
+%			<artifactId>spring-boot-starter-data-jpa</artifactId>
+%		</dependency>
+%		<dependency>
+%			<groupId>org.springframework.boot</groupId>
+%			<artifactId>spring-boot-starter-web</artifactId>
+%		</dependency>
+%
+%		<dependency>
+%			<groupId>org.springframework.boot</groupId>
+%			<artifactId>spring-boot-devtools</artifactId>
+%			<scope>runtime</scope>
+%			<optional>true</optional>
+%		</dependency>
+%		<dependency>
+%			<groupId>org.springframework.boot</groupId>
+%			<artifactId>spring-boot-starter-test</artifactId>
+%			<scope>test</scope>
+%		</dependency>
+%	</dependencies>
+%
+%	<build>
+%		<plugins>
+%			<plugin>
+%				<groupId>org.springframework.boot</groupId>
+%				<artifactId>spring-boot-maven-plugin</artifactId>
+%			</plugin>
+%		</plugins>
+%	</build>
+%
+%\end{lstlisting}
 
 \noindent Il secondo file qui sotto rappresentato è il file configurazione \textit{application.properties}. Di seguito riporto il file che ho utilizzato nel progetto:
-\begin{lstlisting}[language = XML, caption = application.properties del progetto]
-logging.level.root=INFO
-logging.level.org.springframework=ERROR
-logging.level.org.hibernate=TRACE
-logging.level.it.omicronconsulting=DEBUG
-logging.level.org.hibernate.SQL=DEBUG
-logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
-
-
-spring.datasource.url=jdbc:sqlserver://localhost;databaseName=DBDELIVERONE;Trusted_Connection=False;\MultipleActiveResultSets=true;encrypt=true;trustServerCertificate=true;
-spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
-spring.datasource.username=SA
-spring.datasource.password=Password.1
-
-
-spring.jpa.properties.hibernate.format_sql=true
-spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
-spring.jpa.hibernate.ddl-auto=validate
-
-springdoc.swagger-ui.filter=true
-springdoc.swagger-ui.tagsSorter=alpha
-\end{lstlisting}
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width=0.85\columnwidth]{foto_application_properties} 
+    \caption{Foto application.properties configurato e utilizzato}
+\end{figure}
+%\begin{lstlisting}[language = XML, caption = application.properties del progetto]
+%logging.level.root=INFO
+%logging.level.org.springframework=ERROR
+%logging.level.org.hibernate=TRACE
+%logging.level.it.omicronconsulting=DEBUG
+%logging.level.org.hibernate.SQL=DEBUG
+%logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+%
+%
+%spring.datasource.url=jdbc:sqlserver://localhost;databaseName=DBDELIVERONE;Trusted_Connection=False;\MultipleActiveResultSets=true;encrypt=true;trustServerCertificate=true;
+%spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+%spring.datasource.username=SA
+%spring.datasource.password=Password.1
+%
+%
+%spring.jpa.properties.hibernate.format_sql=true
+%spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+%spring.jpa.hibernate.ddl-auto=validate
+%
+%springdoc.swagger-ui.filter=true
+%springdoc.swagger-ui.tagsSorter=alpha
+%\end{lstlisting}
 Possiamo notare come il file utilizzi un formato di configurazione basato su chiavi e valori. Le chiavi rappresentano le diverse proprietà di configurazione dell'applicazione, mentre i valori rappresentano le impostazioni specifiche.\\
 Nel file possiamo notare le seguenti chaivi:
 \begin{itemize}
