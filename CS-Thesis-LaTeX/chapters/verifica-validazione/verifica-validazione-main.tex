@@ -8,9 +8,22 @@ Svolgendo le seguenti analisi regolarmente è stato possibile identificare e cor
 \subsection{Analisi statica}
 Veniva effettuata un’analisi statica che non richiede l'esecuzione del software, sul codice prodotto, eseguendo prima un inspection, una lettura mirata e focalizzata sugli errori più noti e probabili, andando verso errori più specifici in base alla funzionalità implementata.
 \subsection{Analisi dinamica}
-L'analisi dinamica consiste nell'effettuare test sul prodotto in esecuzione ed è stata eseguita nei seguenti modi.\\
+L'analisi dinamica consiste nell'effettuare test sul prodotto in esecuzione. In caso di errore veniva eseguita un’ulteriore verifica successivamente alla mia correzione dell’errore che si era presentato.\\
+\subsubsection{Debugging}
 Per identificare al meglio un errore a run-time veniva usata la tecnica di debugging: consiste nell'individuazione e la correzione di errori che provocano anomalie rilevate durante l'esecuzione del programma. Questa tecnica è possibile grazie allo strumento di debugging che offre IntelliJ che permette di inserire dei breakpoint, cioè dei punti di interruzione nel codice, che non appena raggiunti durante l'esecuzione, sospende l'esecuzione ed è possibile ispezionare lo stato delle variabili, delle strutture dati e lo stack trace delle chiamate.\\ 
-Per testare l'API veniva utilizzato il software Postman. Esso permetteva di osservare la response dell'endpoint in analisi per verificare che fosse conforme alle attese e in caso di errore veniva eseguita un’ulteriore verifica successivamente alla mia correzione dell’errore che si era presentato.\\
+\subsubsection{Postman}
+Per testare l'API veniva utilizzato il software Postman. Esso permetteva di osservare la response dell'endpoint in analisi per verificare che fosse conforme alle attese.\\
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width=0.95\columnwidth]{utilizzo-postman} 
+    \caption{Interfaccia Postman}
+\end{figure}
+
+\noindent Nella \textbf{sezione 1} è possibile creare una nuova richiesta all'interno di una Collezione.\\
+Nella \textbf{sezione 2} si inserisce l'URL per interagire con l'endpoint, si decide il verbo HTTP utilizzato, si aggiungono eventuali parametri di query (parte dell'URL che consente all'utente , se possibile, di filtrare, paginare o personalizzare i risultati).\\
+Nella \textbf{sezione 3} si inserisce il body della request e/o parametri di query nella sezione "Params".\\
+Nella \textbf{sezione 4} in seguito ad aver cliccato il pulsante "Send", si otterrà la response restituita in base a quanto specificato nella request.\\
 
 \section{Testing}
 Per garantire la sicurezza e l’affidabilità, negli ultimi giorni di tirocinio, sono stati introdotti i test di unità.\\
