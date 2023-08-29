@@ -6,7 +6,7 @@ Questo capitolo descrive come è stata attuata la verifica e la validazione all'
 Durante tutto il periodo di tirocinio, ad ogni avanzamento di funzionalità e quindi cambio di requisito da soddisfare, con il tutor Antonio Fasolato è stato verificato che il codice sviluppato fino a quel momento fosse conforme con quanto aspettato e producesse output veritieri. Questo era aiutato inoltre dai controlli di validazione effettuati nei vari Controller e ulteriori controlli inseriti nei Service per garantire l’utilizzo di valori corretti.\\
 Svolgendo le seguenti analisi regolarmente è stato possibile identificare e correggere errori evitando la loro propagazione nel corso della Codifica.
 \subsection{Analisi statica}
-Veniva effettuata un’analisi statica, che non richiede l'esecuzione del software, sul codice prodotto, eseguendo prima un inspection, una lettura mirata e focalizzata sugli errori più noti e probabili, andando verso errori più specifici in base alla funzionalità implementata.
+Veniva effettuata un’analisi statica che non richiede l'esecuzione del software, sul codice prodotto, eseguendo prima un inspection, una lettura mirata e focalizzata sugli errori più noti e probabili, andando verso errori più specifici in base alla funzionalità implementata.
 \subsection{Analisi dinamica}
 L'analisi dinamica consiste nell'effettuare test sul prodotto in esecuzione ed è stata eseguita nei seguenti modi.\\
 Per identificare al meglio un errore a run-time veniva usata la tecnica di debugging: consiste nell'individuazione e la correzione di errori che provocano anomalie rilevate durante l'esecuzione del programma. Questa tecnica è possibile grazie allo strumento di debugging che offre IntelliJ che permette di inserire dei breakpoint, cioè dei punti di interruzione nel codice, che non appena raggiunti durante l'esecuzione, sospende l'esecuzione ed è possibile ispezionare lo stato delle variabili, delle strutture dati e lo stack trace delle chiamate.\\ 
@@ -25,8 +25,7 @@ Dato il poco tempo rimanente, per mettere in pratica quanto appreso, si è decis
     \includegraphics[width=0.85\columnwidth]{config-test} 
     \caption{Configurazione ambiente di testing}
 \end{figure}
-Per poter eseguire dei test su oggetti simulati (mock) , sono stati utilizzate le seguenti componenti.\\
-Tramite l'annotazione \textit{@Mock} sono stati creati i componenti mock da iniettare all’interno del Service sotto test tramite l’annotazione \textit{@InjectMocks}. Tramite il metodo \texttt{init()}, annotato con \textit{@BeforeEach}, inizializziamo i metodi che vogliamo mockare permettendo l’utilizzo delle annotazioni che Mockito fornisce.\\
+Per poter eseguire dei test su oggetti simulati (mock) è stata utilizzata l'annotazione \textit{@Mock} che ha permesso di creare i componenti mock da iniettare all’interno del Service sotto test, tramite l’annotazione \textit{@InjectMocks}. Tramite il metodo \texttt{init()}, annotato con \textit{@BeforeEach}, inizializziamo i componenti che vogliamo mockare permettendo l’utilizzo delle annotazioni che Mockito fornisce.\\
 Qui riporto un code snippet dei controlli eseguiti nel test relativo al metodo di creazione di una nuova Milestone. Per garantire il corretto funzionamento della creazione della Milestone, è stata testata ogni parte delicata che avrebbe compromesso il funzionamento del metodo ,controllando l’eccezione sollevata, al momento dell’errore, assicurando che fosse quella corretta.\\
 
 \begin{figure}[H] 
@@ -38,7 +37,7 @@ Qui riporto un code snippet dei controlli eseguiti nel test relativo al metodo d
 \noindent In questo snippet possiamo osservare come è stata forzata il lancio dell’eccezione quando si va a creare una Milestone con Id già esistente, controllando che sia stata proprio quella l’eccezione lanciata dal metodo.\\
 Mockito offre strumenti, come il metodo \texttt{when()}, che consentono di effettuare stubbing\textsubscript{g} dei metodi, simulando il loro comportamento. Questo permette di definire come tali metodi dovrebbero rispondere quando vengono invocati, restituendo risultati specifici anziché eseguire il codice reale.\\ 
 Un ulteriore metodo fornito da Mockito è \texttt{verify()}, utilizzato per controllare che il metodo \texttt{save()} della repository della Milestone venga chiamato una sola volta. Con \texttt{ArgumentCaptor<>} (che permette di raccogliere i parametri passati in una funzione) andiamo a "catturare" la Milestone salvata col metodo \texttt{save()}.\\
-Per accertare che questa parte di test abbia avuto successo è stato verificato che la response ricevuta dal metodo non sia vuota e, dato che il DTO restituito differisce per alcune caratteristiche dall’istanza completa di una Milestone, non è stato possibile un confronto intero tra i due oggetti, ed è stato ritenuto esaustivo garantire l’uguaglianza dei due Id. Queste verifiche sono state effettuate tramite metodi di asserzione forniti da JUnit.
-Con l’ausilio di questi metodi è stato possibile simulare la corretta creazione di una Milestone.\\
+Per accertare che questa parte di test abbia avuto successo è stato verificato che la response ricevuta dal metodo non fosse vuota e, dato che il DTO restituito differisce per alcune caratteristiche dall’istanza completa di una Milestone, non è stato possibile un confronto intero tra i due oggetti, ed è stato ritenuto esaustivo garantire l’uguaglianza dei due Id. Queste verifiche sono state effettuate tramite metodi di asserzione forniti da JUnit.
+Con l’ausilio di queste metodologie è stato possibile simulare e controllare la corretta creazione di una Milestone.\\
 
 \input{chapters/verifica-validazione/validazione}

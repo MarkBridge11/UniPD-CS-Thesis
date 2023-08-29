@@ -1,9 +1,9 @@
 \section{Spring MVC}
 Nello sviluppo di una API REST tramite Spring Boot è comune l'utilizzo del pattern architetturale Model-View-Controller(MVC).\\
 
-\begin{figure}[!h] 
+\begin{figure}[H] 
     \centering 
-    \includegraphics[width=0.95\columnwidth]{MVC.png} 
+    \includegraphics[width=0.50\columnwidth]{mvc2} 
     \caption{Schema Model-View-Controller}
 \end{figure}
 
@@ -11,11 +11,11 @@ Nello sviluppo di una API REST tramite Spring Boot è comune l'utilizzo del patt
 Il Modello o Model in inglese,appresenta i dati e i metodi per accedere ai dati dell'applicazione. Se esso viene aggiornato in seguito ad azioni o eventi, notificherà la View e il Controller del cambiamento.\\
 Nel contesto dello sviluppo di un'API REST, il Model contiene dati che vengono elaborati e restituiti dall'API.\\
 All'interno del progetto il Model è formato dai seguenti elementi.
-\subsubsection{Entità}
+\subsubsection*{Entità}
 Le entità sono risorse rappresentate con classi Java segnate con l'annotazione\textsubscript{g} \textit{@Entity}. Utilizzando questa annotazione si identifica che quella classe è mappata\textsubscript{g} ad una tabella del database. Esse dichiarano al loro interno, tramite annotazioni JPA apposite, gli attributi corrispondenti alla tabella a cui fa riferimento e, altre annotazioni per mantenere le relazioni presenti nel database tra le tabelle.
-\subsubsection{Repository}
+\subsubsection*{Repository}
 Le repository implementate nel progetto gestiscono l'accesso ai dati e definiscono metodi per eseguire operazioni di base sui dati, come l'inserimento, la modifica, la cancellazione e la ricerca. Tutto questo estendendo interfacce JPA, che consentono di eseguire operazioni in una base di dati senza scrivere codice SQL o query.
-\subsubsection{DTO}
+\subsubsection*{DTO}
 Data Transfer Object (DTO), oggetti utilizzati per modellare le rappresentazioni dei dati, utilizzati per definire sia i dati inviati dal client nelle requests che quelli che inviati dal server al cliente nelle responses.\\
 
 \subsection{View}
@@ -25,10 +25,12 @@ Dato che il progetto si concentrava sul lato back-end, precisamente sullo svilup
 \subsection{Controller}
 Il Controller gestisce il flusso dell'applicazione. Esso riceve i comandi dell'utente attraverso la View e reagisce eseguendo operazioni conseguenti. Queste sue operazioni possono o meno coinvolgere il Model, ma portano generalmente sempre ad un cambiamento di stato della View.\\
 All'interno del meccanismo di Spring MVC il Controller gestisce le richieste HTTP in arrivo, selezionando il Controller adeguato e assegnato a quell'endpoint API. Sono quindi responsabili di ricevere le richieste, elaborarle e restituire le risposte corrispondenti.\\
-Per identificare il metodo associato ad una determinata operazione HTTP, vengono utilizzate le seguenti annotazioni \textit{@PostMapping}, \textit{@GetMapping}, \textit{@PutMapping}, \textit{@PatchMapping} e \textit{@DeleteMapping}. Internamente a questi metodi viene richiamato il Service appropriato per eseguire operazioni utili al risultato finale da restituire.\\
-Per garantire che i dati inseriti dagli utenti o provenienti da richieste siano conformi alle aspettative e non causino errori vengono inseriti dei controlli di validazioni all'interno dei metodi del Controller.\\
+Per identificare il metodo associato ad una determinata operazione HTTP, vengono utilizzate le seguenti annotazioni \textit{@PostMapping}, \textit{@GetMapping}, \textit{@PutMapping}, \textit{@PatchMapping} e \textit{@DeleteMapping}. 
 All'interno del progetto il Controller è formato dai seguenti elementi.
-\subsubsection{Service}
+\subsubsection*{Controller}
+I Controller contengono i metodi a cui vengono associati i percorsi delle richieste HTTP. Esso interpreta i parametri che possono provenire dall'URL o dal corpo della richiesta(parametri di query o dati JSON). Internamente a questi metodi viene richiamato il Service appropriato per eseguire operazioni di business logic al risultato finale da restituire.\\
+Per garantire che i dati inseriti dagli utenti o provenienti da richieste siano conformi alle aspettative e non causino errori vengono inseriti dei controlli di validazioni all'interno dei metodi del Controller.
+\subsubsection*{Service}
 I Service eseguono operazioni complesse ed elaborazioni di dati, gestendo la business logic dell'applicazione. Essi interagiscono con i Repository per recuperare dati dal database e vengono richiamati all'interno dei metodi del Controller.
-\subsubsection{Exception Handler}
-Per centralizzare la gestione delle eccezioni è stato creato un handler che garantisce uniformità alle eccezioni che l'applicazione può produrre.
+\subsubsection*{Exception Handler}
+Per centralizzare la gestione delle eccezioni è stato creato un handler che garantisce uniformità alle eccezioni che l'applicazione può produrre.\\
