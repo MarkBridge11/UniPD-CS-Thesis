@@ -19,11 +19,13 @@ Per testare l'API veniva utilizzato il software Postman. Esso permetteva di osse
     \includegraphics[width=0.95\columnwidth]{utilizzo-postman} 
     \caption{Interfaccia Postman}
 \end{figure}
-
-\noindent Nella \textbf{sezione 1} è possibile creare una nuova richiesta all'interno di una Collezione.\\
-Nella \textbf{sezione 2} si inserisce l'URL per interagire con l'endpoint, si decide il verbo HTTP utilizzato, si aggiungono eventuali parametri di query (parte dell'URL che consente all'utente , se possibile, di filtrare, paginare o personalizzare i risultati).\\
-Nella \textbf{sezione 3} si inserisce il body della request e/o parametri di query nella sezione "Params".\\
-Nella \textbf{sezione 4} in seguito ad aver cliccato il pulsante "Send", si otterrà la response restituita in base a quanto specificato nella request.\\
+\noindent Per testare un endpoint si andava a configurare Postman nelle seguenti sezioni:
+\begin{enumerate}
+\item sezione in cui è possibile creare una nuova richiesta all'interno di una Collezione;
+\item sezione in cui è possibile inserire l'URL (Uniform Resource Locator) che indica l'indirizzo del server e il percorso dell'endpoint a cui si desidera accedere, si seleziona il verbo HTTP e si aggiungono eventuali parametri di query. I parametri di query sono parte dell'URL che consente all'utente di filtrare, paginare o personalizzare i risultati;
+\item sezione in cui è possibile inserire il body della request. Sopra al body si possono notare varie opzioni, di cui è stata utilizzata principalmente la sezione "Params", che permette di scrivere i parametri di query in modo più strutturato;
+\item sezione in cui si potrà visualizzare la risposta in seguito al click sul pulsante "Send". La risposta sarà conforme alle specifiche selezionate.
+\end{enumerate}
 
 \section{Testing}
 Per garantire la sicurezza e l’affidabilità, negli ultimi giorni di tirocinio, sono stati introdotti i test di unità.\\
