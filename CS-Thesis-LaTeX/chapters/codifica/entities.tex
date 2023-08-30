@@ -2,13 +2,13 @@
 
 \begin{figure}[H] 
     \centering 
-    \includegraphics[width=0.5\columnwidth]{entities-package} 
+    \includegraphics[width=0.4\columnwidth]{entities-package2} 
     \caption{Package entità}
 \end{figure}
 
 \noindent All'interno del package Entities troviamo le entità. Per entità si intendono tutte quelle classi Java che definiscono i modelli di dati dell'applicazione.\\
 Queste classi vengono annotate con le seguenti annotazioni JPA utili a stabilire come la classe venga associata a una tabella presente nel database relazionale. Ogni istanza di un'entità rappresenta una riga nella tabella relativa.\\
-Di tutte le tabelle da me create è stata mappata ogni relazione tra tabelle e ogni campo, mentre per ogni tabella del database aziendale sono stati mappati tutti i campi e le relazioni ad altre tabelle di cui potevano essermi utili.\\
+Di tutte le tabelle da me create è stata mappata ogni relazione tra tabelle e campo, mentre per ogni tabella del database aziendale sono stati mappati tutti i campi e le relazioni ad altre tabelle che potevano tornarmi utili.\\
 In ogni entità troviamo setters e getters, costruttori con e senza argomenti.\\
 \subsubsection{DTO Entities}
 All'interno del package "dtoentities" troviamo tutte quelle classi DTO delle entità di cui servivano soltanto determinate informazioni da restituire all'utente, evitando così ridondanza o informazioni superflue. Queste classi non contengono annotazioni, ma sono semplicemente degli oggetti contenenti i campi semplificati delle entità. A loro volta possono contenere altri DTO di altre entità in base alle relazioni che hanno.
@@ -40,19 +40,14 @@ All'interno del package "dtoentities" troviamo tutte quelle classi DTO delle ent
     \includegraphics[width=0.9\columnwidth]{esempio-relazioni} 
     \caption{Esempio di mappatura delle relazioni della tabella RichiestaTestata}
 \end{figure}
-\noindent Per mantenere le relazioni tra le tabelle sono state utilizzate le annotazioni come nello snippet qui sopra raffigurante una porzione della classe Java che mappa la tabella "RichiestaTestata".
-\subsubsection*{OneToMany - ManyToOne}
-Per mappare relazioni uno-a-molti il campo associato sarà una lista di oggetti della classe opposta (in relazione all'esempio, una RichiestaTestata è associata a più RichiesteDettaglio), mentre nella relazione molti-a-uno sarà un oggetto singolo della classe opposta annotato con \textit{@JoinColumn} con \texttt{name} uguale a quello del campo nella tabella del database (in relazione all'esempio, una RichiestaTestata ha un solo Richiedente).\\
-Per mappare una relazione uno-a-molti in una classe Java è necessario avere l'altra classe partecipante con la relazione mappata, poichè questa relazione verrà mappata all'altra tramite l'attributo \texttt{mappedBy} contenente il campo della classe in cui è stata dichiarata la relazione opposta.\\
-Nell'esempio è stato utilizzato anche il parametro \texttt{orphanRemoval} per poter implementare la cancellazione di una RichiestaTestata garantendo l'eliminazione di tutte le RichiesteDettaglio associate al momento della rimozione.
-
-\subsubsection*{OneToOne}
-Per mappare una relazione uno-a-uno bisogna inserire l'annotazione sopra al campo che fa riferimento all'altra tabella nella relazione. Anche in questo caso se si vuole mappare da entrambi le parti la relazione bisogna utilizzare lo stesso principio dichiarato nella relazione \textit{@OneToMany}, solo che da entrambi le parti avranno come campo un oggetto della classe opposta.
-
-\subsubsection*{ManyToMany}
-Per mappare una relazione molti-a-molti viene mappata la tabella di join presente nel database tra le due tabelle, utilizzando il codice che si vede in esempio.
-Per gestire operazioni di rimozione tra le due tabelle è stato utilizzato un metodo annotato con \textit{@PreRemove} nella classe TipoSkill che entra in azione quando una RichiestaTestata viene eliminata, assicurando che la disconnessione avvenga in modo appropriato.
-
-\subsubsection*{Relazioni bidirezionali}
-Per mappare una relazione non è necessario mappare entrambi i lati della relazione, ma ritorna utile solo in base quello che si va ad implementare. In questo tipo di relazione è importante gestire correttamente la sincronizzazione tra le due direzioni della relazione, dato che quando si aggiorna una parte dell'entità bisogna aggiornare anche l'altra.\\
-Le relazioni bidirezionali possono essere utili quando è necessario accedere facilmente ad entrambi i lati della relazione, ma richiedono una maggiore attenzione alla sincronizzazione.
+\noindent Per mantenere le relazioni tra le tabelle sono state utilizzate le annotazioni come nello snippet qui sopra raffigurante una porzione della classe Java che mappa la tabella RichiestaTestata.\\
+In casi in cui entrambi i lati della relazione necessitavano per motivi implementativi, come la visualizzazione da entrambe le parti dell'informazione, di mappare la relazione opposta, veniva dichiarata una relazione bidirezionale, in cui entrambi i lati mappavano la relazione e diventava importante gestire correttamente la sincronizzazione tra le due entità.
+\begin{itemize}
+\item \textbf{uno-a-molti}, relazione in cui il campo associato sarà una lista di oggetti della classe opposta (in relazione all'esempio, una RichiestaTestata è associata a più RichiesteDettaglio), mentre nella relazione molti-a-uno sarà un oggetto singolo della classe opposta annotato con \textit{@JoinColumn} con \texttt{name} uguale a quello del campo nella tabella del database (in relazione all'esempio, una RichiestaTestata ha un solo Richiedente).\\
+Nell'esempio è stato utilizzato il parametro \texttt{mappedBy} per mappare la relazione opposta e \texttt{orphanRemoval} per poter implementare la cancellazione di una RichiestaTestata garantendo l'eliminazione di tutte le RichiesteDettaglio associate al momento della rimozione.
+\item \textbf{uno-a-uno}, relazione in cui un record della tabella è associato ad un solo record dell'altra tabella. Anche in questo caso se si vuole mappare da entrambi le parti la relazione bisogna utilizzare lo stesso principio dichiarato nella relazione \textit{@OneToMany}, solo che da entrambi le parti avranno come campo un oggetto della classe opposta.\\
+Non sono state identificate relazioni uno-a-uno nel database.
+\item \textbf{molti-a-molti}, relazione in cui viene mappata la tabella di join presente nel database tra le due tabelle, utilizzando il codice che si vede in esempio.
+Per gestire operazioni di rimozione tra le due tabelle è stato utilizzato un metodo annotato con \textit{@PreRemove} nella classe TipoSkill, che entra in azione quando una RichiestaTestata viene eliminata, assicurando che la disconnessione avvenga in modo appropriato.
+%\item \textbf{relazione bidirezionale}, relazione in cui è importante gestire correttamente la sincronizzazione tra le due direzioni della relazione, dato che quando si aggiorna una parte dell'entità bisogna aggiornare anche l'altra. Per mappare una relazione non è necessario mappare entrambi i lati della relazione, ma ritorna utile solo in base quello che si va ad implementare.
+\end{itemize}

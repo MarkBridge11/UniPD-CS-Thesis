@@ -11,11 +11,11 @@ Per cominciare è stato creato un \texttt{Dockerfile} nella root del progetto. Q
     \includegraphics[width=0.80\columnwidth]{dockerfile} 
     \caption{Configurazione Dockerfile}
 \end{figure}
-\noindent All'interno del file, possiamo notare due sezioni separate, quella di build e quella di run (esecuzione).
-\subsubsection*{Sezione Build}
-Nella sezione di "build" viene indicato che si sta costruendo un'immagine di Docker basata su Maven 3.9.3 e Java 17. Vengono poi eseguite operazioni relative alla compilazione dell'applicazione, come la copia del file sorgente, la verifica delle dipendenze tramite il tool di build Maven e la crazione del pacchetto \texttt{.jar}.
-\subsubsection*{Sezione Run}
-La sezione di "run" ha come obiettivo l'esecuzione dell'applicazione. In questa sezione viene utilizzata nuovamente la stessa immagine di Java e vengono copiati i risultati della prima fase. L'istruzione finale \texttt{ENTRYPOINT} definisce il comando che verrà eseguito quando il container basato su questa immagine verrà avviato.
+\noindent All'interno del file, possiamo notare due stage separati, quello di build e quello di run (esecuzione).
+\subsubsection*{Stage Build}
+Nello stage di "build" viene indicato che si sta costruendo un'immagine di Docker basata su Maven 3.9.3 e Java 17. Vengono poi eseguite operazioni relative alla compilazione dell'applicazione, come la copia del codice sorgente, la verifica delle dipendenze tramite il tool di build Maven e la creazione del pacchetto \texttt{.jar}.
+\subsubsection*{Stage Run}
+Lo stage di "run" ha come obiettivo l'esecuzione dell'applicazione. In questo stage viene utilizzata nuovamente la stessa immagine di Java e vengono copiati i risultati della prima fase. L'istruzione finale \texttt{ENTRYPOINT} definisce il comando che verrà eseguito quando il container basato su questa immagine verrà avviato.
 \subsection{Costruzione dell'immagine e avvio dell'applicazione}
 In seguito alla creazione del \texttt{Dockerfile} si apre il terminale nella directory in cui si trova questo file.\\
 Seguono poi i seguenti passi:
