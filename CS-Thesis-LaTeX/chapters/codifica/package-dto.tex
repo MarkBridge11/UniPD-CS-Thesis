@@ -1,4 +1,4 @@
-\subsection{Package dto}
+\section{Package dto}
 Per la composizione delle richieste che il client invia o delle risposte che il server manda, sono state create vari tipi di requests e responses.\\
 Ogni oggetto di risposta è composto da un oggetto data e un oggetto metadata, mentre gli oggetti di richiesta possono variare. Se la richiesta è fatta per un endpoint che restituisce una lista di risultati, possiamo avere tre casistiche:
 \begin{itemize}
@@ -9,7 +9,7 @@ Ogni oggetto di risposta è composto da un oggetto data e un oggetto metadata, m
 Se invece la richiesta è costruita per un endpoint che restituisce un singolo oggetto nell'oggetto data, non viene utilizzato alcun body o parametri di query, ma solo una path variable.\\
 Questa suddivisione data e metadata è un modello comune nella progettazione API per separare i dati effettivi o dati che forniscono informazioni per ottenere un tipo di risposta, dalle informazioni aggiuntive che descrivono il risultato o aggiungono caratteristiche alla richiesta.\\
 Questo package è formato da vari subpackage\textsubscript{g}.
-\subsubsection{Common}
+\subsection{Common}
 \begin{figure}[H] 
     \centering 
     \includegraphics[width=1.0\columnwidth]{dto-sub-common} 
@@ -17,7 +17,7 @@ Questo package è formato da vari subpackage\textsubscript{g}.
 \end{figure}
 Questo subpackage contiene la response di base, response paginata, la response utilizzata nell'eccezione personalizzata, una request per la paginazione e i vari metadata utilizzati nelle responses. Ogni metadata contiene un boolean che indica se si è andati in errore (true) o meno (false), il messaggio di errore e una lista di \texttt{validation}, contenente informazioni di validazione dei dati.\\
 È stata creata una classe \texttt{Pagination} per avere un controllo personalizzato sulla Paginazione.
-\subsubsection{Requests e Body}
+\subsection{Requests e Body}
 \begin{figure}[H] 
     \centering 
     \includegraphics[width=1.0\columnwidth]{dto-sub-requests-body-2} 
@@ -31,7 +31,7 @@ Esistono due tipi di body:
 \end{itemize}
 All'interno del subpackage requests troviamo anche \texttt{PatchRequest}, contenente un unico campo corrispondente ad una lista di \texttt{PatchField}. Questa richiesta viene utilizzata nella richieste PATCH, in cui è possibile inserire uno o più valori in base a cosa si va a modificare.
 
-\subsubsection{Responses}
+\subsection{Responses}
 \begin{figure}[H] 
     \centering 
     \includegraphics[width=0.9\columnwidth]{dto-sub-responses} 
