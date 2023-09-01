@@ -7,17 +7,9 @@
 \end{figure}
 
 \noindent All'interno del package Entities troviamo le entità. Per entità si intendono tutte quelle classi Java che definiscono i modelli di dati dell'applicazione.\\
-Queste classi vengono annotate con le seguenti annotazioni JPA utili a stabilire come la classe venga associata a una tabella presente nel database relazionale. Ogni istanza di un'entità rappresenta una riga nella tabella relativa.\\
+Queste classi vengono annotate con annotazioni JPA utili a stabilire come la classe venga associata a una tabella presente nel database relazionale. Ogni istanza di un'entità rappresenta una riga nella tabella relativa.\\
 Di tutte le tabelle da me create è stata mappata ogni relazione tra tabelle e campo, mentre per ogni tabella del database aziendale sono stati mappati tutti i campi e le relazioni ad altre tabelle che potevano tornarmi utili.\\
 In ogni entità troviamo setters e getters, costruttori con e senza argomenti.\\
-\subsection{DTO Entities}
-All'interno del package "dtoentities" troviamo tutte quelle classi DTO delle entità di cui servivano soltanto determinate informazioni da restituire all'utente, evitando così ridondanza o informazioni superflue. Queste classi non contengono annotazioni, ma sono semplicemente degli oggetti contenenti i campi semplificati delle entità. A loro volta possono contenere altri DTO di altre entità in base alle relazioni che hanno.
-\begin{figure}[H] 
-    \centering 
-    \includegraphics[width=0.9\columnwidth]{merge-dtopianificazione} 
-    \caption{Esempio di classe DTO di Pianificazione}
-\end{figure}
-\noindent Ogni entità DTO possiede tre costruttori: costruttore senza argomenti e con argomenti e infine un costruttore che velocizzava la conversione da entità ad entità DTO.
 
 \subsection{Esempio di un'entità}
 \begin{figure}[H] 
@@ -51,3 +43,11 @@ Non sono state identificate relazioni uno-a-uno nel database.
 Per gestire operazioni di rimozione tra le due tabelle è stato utilizzato un metodo annotato con \textit{@PreRemove} nella classe TipoSkill, che entra in azione quando una RichiestaTestata viene eliminata, assicurando che la disconnessione avvenga in modo appropriato.
 %\item \textbf{relazione bidirezionale}, relazione in cui è importante gestire correttamente la sincronizzazione tra le due direzioni della relazione, dato che quando si aggiorna una parte dell'entità bisogna aggiornare anche l'altra. Per mappare una relazione non è necessario mappare entrambi i lati della relazione, ma ritorna utile solo in base quello che si va ad implementare.
 \end{itemize}
+\subsection{Subpackage dtoentities}
+All'interno del package "dtoentities" troviamo tutte quelle classi DTO delle entità di cui servivano soltanto determinate informazioni da restituire all'utente, evitando così ridondanza o informazioni superflue. Queste classi non contengono annotazioni, ma sono semplicemente degli oggetti contenenti i campi semplificati delle entità. A loro volta possono contenere altri DTO di altre entità in base alle relazioni che hanno.
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width=0.9\columnwidth]{merge-dtopianificazione} 
+    \caption{Esempio di classe DTO di Pianificazione}
+\end{figure}
+\noindent Ogni entità DTO possiede tre costruttori: costruttore senza argomenti e con argomenti e infine un costruttore che velocizzava la conversione da entità ad entità DTO (come mostrato nell'immagine qui sopra).
