@@ -22,8 +22,11 @@ Come descritto nell'immagine l'interazione tra i componenti segue questo flusso:
     \includegraphics[width=0.4\columnwidth]{controllers} 
     \caption{Controller sviluppati}
 \end{figure}
-Il Controller è punto di instradamento per le richieste HTTP. Riceve le richieste dal client, estrae i dati dai parametri della richiesta o dal corpo (body), esegue appropriati controlli di validazione ed infine inoltra le operazioni al Service. I controlli di validazione comprendono: validazione degli UUID, validazione del formato delle date inserite, validazione che un dato obbligatorio non sia nullo e controllo che i filtri inseriti non siano non valorizzati.\\
+Il Controller è punto di instradamento per le richieste HTTP. Riceve le richieste dal client, estrae i dati dai parametri della richiesta o dal corpo (body), esegue appropriati controlli di validazione ed infine inoltra le operazioni al Service. I controlli di validazione comprendono: validazione degli ID, validazione del formato delle date inserite, validazione che un dato obbligatorio non sia nullo e controllo che i filtri inseriti non siano non valorizzati.\\
 Ogni Controller è formato dalla sua interfaccia, contenente la firma dei metodi associati agli endpoint, e dalla sua implementazione. Ognuno di essi è annotato con \textit{@RestController}.
+
+\input{chapters/codifica/swagger}
+
 
 \begin{figure}[H] 
     \centering 
@@ -32,7 +35,7 @@ Ogni Controller è formato dalla sua interfaccia, contenente la firma dei metodi
 \end{figure}
 \noindent All'interno dell'interfaccia del Controller troviamo tutti i metodi associati agli endpoint. Per identificare a quale endpoint appartiene vengono utilizzate annotazioni come: \textit{@PostMapping}, \textit{@GetMapping}, \textit{@DeleteMapping}, \textit{@PutMapping} e \textit{@PatchMapping}.\\
 Tramite l'annotazione \textit{@RequestBody} Spring deserializza\textsubscript{g} automaticamente il JSON in un tipo Java, in questo caso \texttt{MilestoneListRequest}.
-Come libreria standard utilizzata per mappare i campi JSON inseriti nella request dall'utente in un oggetto Java è la libreria Jackson\textsubscript{g}.
+Come libreria standard utilizzata per mappare i campi JSON inseriti nella request dall'utente in un oggetto Java, viene utilizzata la libreria Jackson\textsubscript{g}.
 
 \begin{figure}[H] 
     \centering 
@@ -49,7 +52,7 @@ In questo code snippet vediamo il controllo di validazione su l'Id del Progetto 
     \caption{Repository sviluppati}
 \end{figure}
 Un Repository in Spring Boot fornisce un modo per interagire con una fonte di dati, in questo caso un database. Permette di eseguire operazioni CRUD tramite Spring Data JPA che genera automaticamente query SQL in base ai metodi che l'interfaccia del Repository contiene.\\
-Le Repository da me create estendono, per poter eseguire le query, estendono l'interfaccia \texttt{JpaRepository} o \texttt{ PagingAndSortingRepository} per risposte paginate.\\
+Le Repository da me create estendono, per poter eseguire le query, l'interfaccia \texttt{JpaRepository} o \texttt{ PagingAndSortingRepository} per risposte paginate.\\
 Ogni Repository deve essere annotato con \textit{@Repository}. 
 \begin{figure}[H] 
     \centering 
@@ -64,32 +67,32 @@ Ogni Repository deve essere annotato con \textit{@Repository}.
     \includegraphics[width=0.4\columnwidth]{services} 
     \caption{Service sviluppati}
 \end{figure}
-Il Service è un componente che contiene elaborazioni di dati, chiamate a metodi nei Repository per accedere al database e restituisce i risultati al Controller.\\
-Ogni Service è annotato \textit{@Service} e può contenere fino a tre casistiche diverse di metodi che sono elencati nelle prossime sotto-sezioni.
+Il Service è un componente che contiene elaborazioni di dati, operazioni complesse, chiamate a metodi nei Repository per accedere al database e restituisce i risultati al Controller.\\
+Ogni Service è annotato \textit{@Service}. Può contenere fino a tre casistiche diverse di logiche implementative che sono elencate nelle prossime sotto-sezioni.
 
 \subsubsection{Esempio con utilizzo di metodi dei Repository}
-Questa casistica è la più frequente poichè permette di effettuare le semplici operazioni CRUD che l'endpoint solitamente richiede. In questi casi vengono utilizzati metodi dei Repository come: \texttt{save()} per creare una nuova istanza di un'entità nel database, \texttt{deleteById()} per cancellare un'istanza da database e \texttt{findById()} per ricercare un'istanza precisa di un'entità nel database.
+Questa casistica è la più frequente poiché permette di effettuare le semplici operazioni CRUD che gli endpoint solitamente richiedono. In questi casi vengono utilizzati metodi dei Repository come: \texttt{save()} per creare una nuova istanza di un'entità nel database, \texttt{deleteById()} per cancellare un'istanza da database e \texttt{findById()} per ricercare un'istanza precisa di un'entità nel database.
 \begin{figure}[H] 
     \centering 
     \includegraphics[width=0.95\columnwidth]{service-delete-example} 
     \caption{Metodo deleteMilestone() nel Service}
 \end{figure}
-\noindent In questo code snippet possiamo osservare come funziona il metodo \texttt{deleteMilestone()} all'interno del \texttt{MilestoneService}.Viene eseguito un controllo tramite un metodo fornito dal repository della Milestone per verificare se l'ID è presente nel database. Se l'ID non è presente, viene lanciata un'eccezione che impedisce l'eliminazione della Milestone. Questa eccezione comporta la restituzione di un codice di errore 404 per informare l'utente che la Milestone con l'ID specificato non esiste nel database e quindi non può essere cancellata.\\
+\noindent In questo code snippet possiamo osservare come funziona il metodo \texttt{deleteMilestone()} all'interno del \texttt{MilestoneService}.Viene eseguito un controllo tramite \texttt{findById()} per verificare se l'ID è presente nel database e in caso negativo viene lanciata un'eccezione che impedisce l'eliminazione della Milestone. Questa eccezione comporta la restituzione di un codice di errore 404 per informare l'utente che la Milestone con l'ID specificato non esiste nel database e quindi non può essere cancellata.\\
 Il controllo successivo verifica che la Milestone non sia associata ad una Pianificazione ed in caso di esito positivo lancia un'eccezione che contiene un codice di errore 409.\\
 Se tutti questi controlli non interrompono l'esecuzione, allora avverrà la cancellazione nel database tramite il metodo \texttt{deleteById()} della Milestone.\\
-Viene infine generata la response da ritornare al Controller formata da un oggetto metadata vuoto, dato che non ci sono stati errori, e una nuova \texttt{MilestoneResponse}, contenente la Milestone rimossa.
+Viene infine generata la response da ritornare al Controller formata da un oggetto "metadata" vuoto, dato che non ci sono stati errori, e una nuova \texttt{MilestoneResponse}, contenente la Milestone rimossa che comporrà l'oggetto "data".
 
 \subsubsection{Esempio di creazione query con filtri}
-Un altro metodo rilevante utilizzato nei Service è quello utilizzato per la generazione della query personalizzata in base ai filtri inseriti dall'utente.\\
-Dato che la query con Spring Data JPA sarebbe stata troppo lunga e poco leggibile, è stato deciso di crearla tramite \textit{CriteriaBuilder}\textsubscript{g} e \textit{CriteriaQuery}\textsubscript{g} che permettono di creare query dinamiche in modo programmatico.
+Un'altra logica rilevante utilizzata nei Service è quella che server a generare una query dinamica in base ai filtri inseriti dall'utente.\\
+Dato che la query con Spring Data JPA sarebbe stata troppo lunga e poco leggibile, è stato deciso di crearla tramite \textit{CriteriaBuilder}\textsubscript{g} e \textit{CriteriaQuery}\textsubscript{g}, che permettono di creare query dinamiche in modo programmatico.
 \begin{figure}[H] 
     \centering 
-    \includegraphics[width=0.95\columnwidth]{criteriaquery} 
+    \includegraphics[width=0.90\columnwidth]{criteriaquery} 
     \caption{Code snippet della creazione della query basata su filtri inseriti}
 \end{figure}
-\noindent Nel seguente estratto di codice, ho ridotto la complessità mantenendo solo le parti essenziali che illustrano il funzionamento.\\
+\noindent Nel seguente estratto di codice ho ridotto la complessità mantenendo solo le parti essenziali che illustrano il funzionamento.\\
 Nel primo blocco di istruzioni inizializziamo \textit{CriteriaBuilder}, una nuova \textit{CriteriaQuery} e selezioniamo tutte le \texttt{Milestone} uniche.\\
-Nelle successive istruzioni andiamo a creare tutte le operazioni di \textit{Join<>} tra le entità, inseriamo dei predicati (condizioni logiche, utili quando la query è dinamica) nella clausola \texttt{where()} della query e infine generiamo la query simulando la paginazione recuperando la lista di risultati in una lista di \texttt{Milestone}.
+Nelle successive istruzioni andiamo a creare tutte le operazioni di \textit{Join<>} tra le entità, inseriamo dei predicati (condizioni logiche, utili quando la query è dinamica) nella clausola \texttt{where()} della query e infine generiamo la query simulando la paginazione, recuperando la lista di risultati in una lista di \texttt{Milestone}.
 
 \subsubsection{Esempio di creazione file Excel}
 \begin{figure}[H] 
@@ -97,13 +100,13 @@ Nelle successive istruzioni andiamo a creare tutte le operazioni di \textit{Join
     \includegraphics[width=0.95\columnwidth]{create-excel-method} 
     \caption{Code snippet semplificato della creazione di un file Excel}
 \end{figure}
-L'ultimo metodo che differisce dagli altri è quello utilizzato per la creazione di un file Excel. In questo frammento di codice è stato semplificato il funzionamento per mostrare i punti cardine.\\
+L'ultima logica rilevante è quella utilizzata per la creazione di un file Excel. In questo frammento di codice è stato semplificato il funzionamento per mostrare i punti cardine.\\
 La sintassi utilizzata dalla libreria Apache POI è molto semplice e intuitiva. Nelle prime righe andiamo a creare una nuova riga \texttt{Row} per l'header e una che conterrà valori. Per ogni riga bisognerà creare poi una cella \texttt{Cell}. Successivamente è possibile applicare uno stile alla cella \texttt{CellStyle} e il suo valore.\\
-Dopo che il file Excel è stato compilato il contenuto verrà scritto su un array di byte di tipo \texttt{ByteArrayOutputStream}.
+Dopo che il file Excel è stato compilato, il contenuto verrà scritto su un array di byte di tipo \texttt{ByteArrayOutputStream}.
 Questo array verrà restituito al Controller che specificherà nella risposta HTTP fornita:
 \begin{enumerate}
 \item l'intestazione "Content-Disposition" nel formato "attachment", che indica al browser che il contenuto dovrebbe essere trattato come un allegato scaricabile;
-\item imposta il tipo di contenuto del file, in questo caso Excel con estensione .xlsx;
+\item imposta il tipo di contenuto del file, in questo caso Excel con estensione .xls;
 \item specifica nel body della risposta l'array ritornato dal Service.
 \end{enumerate}
 Il client vedrà la finestra di dialogo di download nel browser e potrà scaricare il file.
