@@ -1,7 +1,18 @@
-\section{Endpoint sviluppati dell'API REST}
-In questa sezione si trovano le descrizioni di tutti gli endpoint implementati, suddivisi in base all'ambito di interesse del servizio. Sarà fornito anche il verbo HTTP e il percorso necessario per effettuare ciascuna richiesta.\\
+\section{Convenzioni di denominazione REST}
+Buona prassi nella creazione di un'API REST è il rispetto di convenzioni per la nomenclatura degli endpoint. Sebbene non esista un'unica convenzione obbligatoria, esistono delle best practices\textsubscript{g} per garantire una facile lettura e comprensibilità per agevolare gli sviluppatori che adoperano l'API.\\
+Le seguenti convenzioni sono state rispettate nello sviluppo dell'API:
+\begin{itemize}
+\item  pluralizzare le risorse, per distinguere se si fa riferimento ad una lista di una determinata risorsa o ad una singola risorsa;
+\item usare lettere minuscole;
+\item non usare estensioni dei file;
+\item in caso di nomi composti utilizzare il "-";
+\item non usare underscore;
+\item non utilizzare abbreviazioni o slang;
+\item non utilizzare verbi, poichè l'azione dovrebbe essere indicata dal metodo HTTP utilizzato.
+\end{itemize}
+
+\section{Verbi standard HTTP}
 I verbi standard forniti da HTTP utilizzati applicati all'API REST sono i seguenti:
- 
 \setlength{\arrayrulewidth}{0.3mm}
 \renewcommand{\arraystretch}{2.5}
 \begin{center}
@@ -14,7 +25,7 @@ POST   & Utilizzato per inviare dati al server al fine di creare una nuova risor
 GET    & Utilizzato per richiedere dati al server in merito ad una o più risorse senza modificarle          \\
 %\rowcolor{mygray}
 DELETE &   Utilizzato per eliminare una risorsa specifica dal server          \\
-PUT    &   Utilizzato per aggiornare totalmente una risorsa e viene utilizzato quando si vuole sostituire completamente una risorsa          \\
+PUT    &   Utilizzato per aggiornare totalmente una risorsa sovrascrivendola\\
 %\rowcolor{mygray}
 PATCH  &     Utilizzato per effettuare aggiornamenti parziali a una risorsa esistente        \\ 
 \hline
@@ -26,9 +37,10 @@ PATCH  &     Utilizzato per effettuare aggiornamenti parziali a una risorsa esis
 
 %Per garantire una lettura chiara dello stato dell'operazione richiesta, sono stati utilizzati i seguenti codici di risposta HTTP. Questi codici 
 
-\noindent Di seguito elenco gli endpoint organizzati per ambito di interesse, specificato il verbo HTTP utilizzato, il path per effettuare la richiesta e una descrizione della sua funzionalità.
+\section{Endpoint sviluppati}
+\noindent In questa sezione si trovano le descrizioni di tutti gli endpoint implementati, suddivisi in base all'ambito di interesse. Sarà fornito anche il verbo HTTP e il percorso necessario per effettuare ciascuna richiesta.\\
 \subsection*{Anagrafiche}
-Questi endpoint vengono utilizzati dal Program Manager per effettuare operazioni di lettura sulle dati aziendali. 
+Questi endpoint vengono utilizzati dal Program Manager per effettuare operazioni di lettura sulle anagrafiche aziendali. 
 \setlength{\arrayrulewidth}{0.3mm}
 \renewcommand{\arraystretch}{2.5}
 \begin{center}
@@ -39,7 +51,7 @@ Questi endpoint vengono utilizzati dal Program Manager per effettuare operazioni
 GET    & \texttt{/area-competenza/\{id\}} & Permette la lettura di un'Area di Compentenza dato l'ID\\
 GET    & \texttt{/clienti} & Permette la lettura da DB di tutti i Clienti ottenendo come risposta la lista di tutti i Clienti\\
 GET    & \texttt{/clienti/\{id\}} & Permette la lettura da DB di un Cliente dato l'Id ottenendo come risposta il Cliente corrispondente\\
-GET    & \texttt{/risorse/\{id\}} & Permette la lettura da DB di un Risorsa dato l'Id ottenendo come risposta il Risorsa corrispondente\\
+GET    & \texttt{/risorse/\{id\}} & Permette la lettura da DB di un Risorsa dato l'Id ottenendo come risposta la Risorsa corrispondente\\
 GET    & \texttt{/ruoli} & Permette la lettura da DB di tutti i Ruoli ottenendo come risposta la lista di tutti i Ruoli\\
 GET    & \texttt{/ruoli/\{id\}} & Permette la lettura da DB di un Ruolo dato l'Id ottenendo come risposta il Ruolo corrispondente\\
 GET    & \texttt{/skill} & Permette la lettura da DB di tutte le Skill ottenendo come risposta la lista di tutte le Skill\\
@@ -61,7 +73,7 @@ Questi endpoint consentono la creazione, lettura, modifica ed eliminazione di Mi
 \textbf{Verbo}  & \textbf{Path} & \textbf{Descrizione}\\
 \hline
 POST    & \texttt{/milestones} & Permette l'inserimento di una nuova Milestone, inserendo il Progetto associato, il Commerciale, la Pianificazione e altri dettagli.\\
-POST    & \texttt{/milestones/list} & Rappresenta una POST di ricerca. Restituisce una lista di Milestone in base a: filtri inseriti dall'utente, parola chiave nella quicksearch (q), booleano in cui si decide se applicare tutti i filtri (AND) o che ne valga almeno uno (OR).\\
+POST    & \texttt{/milestones/list} & Rappresenta una POST di ricerca. Restituisce una lista di Milestone in base ai filtri inseriti dall'utente, alla parola chiave inserita nella quicksearch (q) e a un booleano che determina se applicare tutti i filtri in modo congiuntivo (AND) o disgiuntivo (OR).\\
 PATCH    & \texttt{/milestones/\{id\}/type} & Permette la modifica del campo Type di una Milestone su DB.\\
 GET    & \texttt{/milestones/\{id\}} & Permette la lettura da DB di una Milestone dato l'Id ottenendo come risposta la Milestone corrispondente.\\
 DELETE    & \texttt{/milestones/\{id\}} & Permette l'eliminazione da DB di una Milestone dato l'Id ottenendo come risposta la Milestone eliminata.\\
@@ -87,7 +99,7 @@ PUT & \texttt{/pianificazioni/\{id\}} & Permette la modifica parziale o totale d
 DELETE    & \texttt{/pianificazioni/\{id\}} & Permette l'eliminazione da DB di una Pianificazione dato l'Id ottenendo come risposta la Pianificazione eliminata.\\
 POST    & \texttt{/pianificazioni} & Permette l'inserimento di una nuova Pianificazione ed eventuali entità associate come: risorsa, ruolo, milestone, progetto, responsabile e figura.\\
 POST    & \texttt/{pianificazioni/xlsx} & Permette l'esportazione di report Excel di Pianificazioni in base a filtri inseriti dall'utente.\\
-POST    & \texttt{/pianificazioni/list} & Rappresenta una POST di ricerca. Restituisce una lista di Pianificazioni in base a: filtri inseriti dall'utente, parola chiave nella quicksearch (q), booleano in cui si decide se applicare tutti i filtri (AND) o che ne valga almeno uno(OR).\\
+POST    & \texttt{/pianificazioni/list} & Rappresenta una POST di ricerca. Restituisce una lista di Pianificazioni in base ai filtri inseriti dall'utente, alla parola chiave inserita nella quicksearch (q) e a un booleano che determina se applicare tutti i filtri in modo congiuntivo (AND) o disgiuntivo (OR).\\
 PATCH    & \texttt{/pianificazioni/\{id\}/times} & Permette la modifica dei campi Data Inizio e Data Fine di una Pianificazione su DB.\\
 PATCH    & \texttt{/pianificazioni/\{id\}/festivi} & Permette la modifica del campo Festivi di una Pianificazione su DB.\\
 GET    & \texttt{/pianificazioni/\{id\}/audit} & Permette la lettura delle modifiche effettuate su una Pianificazione dalla tabella di log.\\
@@ -100,7 +112,7 @@ GET    & \texttt{/pianificazioni/\{id\}/audit} & Permette la lettura delle modif
 
 
 \subsection*{Richieste}
-Questi endpoint consetono la creazione, lettura, modifica ed eliminazione di Richieste di Pianificazioni. Vengono utilizzati principalmente dal Project Manager.
+Questi endpoint consentono la creazione, lettura, modifica ed eliminazione di Richieste di Pianificazioni. Vengono utilizzati principalmente dal Project Manager.
 \setlength{\arrayrulewidth}{0.3mm}
 \renewcommand{\arraystretch}{2.5}
 \begin{center}
@@ -111,14 +123,13 @@ Questi endpoint consetono la creazione, lettura, modifica ed eliminazione di Ric
 GET    & \texttt{/richieste/\{id\}} & Permette la lettura da DB di una Richiesta dato l'Id ottenendo come risposta la Richiesta corrispondente.\\
 PUT    & \texttt{/richieste/\{id\}} & Permette la modifica parziale o totale di campi di una Richiesta su DB sovrascrivendola.\\
 DELETE    & \texttt{/richieste/\{id\}} & Permette l'eliminazione da DB di una Richiesta dato l'Id ottenendo come risposta la Richiesta eliminata.\\
-POST    & \texttt{/richieste} & Permette l'inserimento di una nuova Richiesta, inserendo le Figure Professionali e le Skill richieste e vari dettagli.\\
-POST    & \texttt{/richieste/list} & Rappresenta una POST di ricerca. Restituisce una lista di Richieste in base a: filtri inseriti dall'utente, parola chiave nella quicksearch (q), booleano in cui si decide se applicare tutti i filtri (AND) o che ne valga almeno uno (OR)\\
+POST    & \texttt{/richieste} & Permette l'inserimento di una nuova Richiesta, inserendo le Figure Professionali e le Skill richieste e altri dettagli.\\
+POST    & \texttt{/richieste/list} & Rappresenta una POST di ricerca. Restituisce una lista di Richieste in base ai filtri inseriti dall'utente, alla parola chiave inserita nella quicksearch (q) e a un booleano che determina se applicare tutti i filtri in modo congiuntivo (AND) o disgiuntivo (OR).\\
 DELETE    & \texttt{/richieste/\{id\}/stato} & Permette la modifica del campo Stato di una Richiesta su DB.\\
-DELETE    & \texttt{/richieste/\{id\}/priorita} & Permette la modifica del campo Priorita di una Richiesta su DB.\\
+DELETE    & \texttt{/richieste/\{id\}/priorita} & Permette la modifica del campo Priorità di una Richiesta su DB.\\
 \hline
 \hiderowcolors
-\caption{Endpoint Pianificazioni sviluppati}
+\caption{Endpoint Richieste sviluppati}
 \label{tab:endpoint-richieste-api}
 \end{longtable}
 \end{center}
-

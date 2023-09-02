@@ -15,10 +15,10 @@ Durante la stesura del testo sono state adottate le seguenti convenzioni:
     \caption{Logo Omicron}
 \end{figure}
 
-\noindent L’azienda Omicron Consulting è specializzata nello sviluppo di software gestionali e di revisione di processi aziendali. Essa è presente nel mercato ICT dal 1980, spiccando su vari settori, in cui hanno effettuato importanti implementazioni in area ICT come: Manufacturing, Automotive, Aerospace, Logistics e altre aree.
+\noindent L’azienda Omicron Consulting è specializzata nello sviluppo di software gestionali e di revisione di processi aziendali. Essa è presente nel mercato ICT dal 1980, spiccando su vari settori, in cui hanno effettuato importanti implementazioni in area ICT come:  Manufacturing, Automotive, Aerospace, Logistics e altre aree.
 Con particolare riferimento al settore Manufacturing si sono specializzati nello sviluppo di progetti di trasformazione ERP (acquisendo la certificazione VAR di SAP), stringendo alleanze strategiche con realtà ICT nazionali ed internazionali.\\
 Offrono servizi di gestione e supporto di sistemi ERP, sviluppo di progetti di Business Intelligence e personalizzazione di sistemi software.\\
-Per completare il pacchetto dei servizi offerti, Omicron ha un'esperienza di alto livello negli ambiti Banking,Finance and Insurance, lavorando con le principali istituzioni bancarie e assicurative italiane.\\
+Per completare il pacchetto dei servizi offerti, Omicron ha un'esperienza di alto livello negli ambiti Banking, Finance and Insurance, lavorando con le principali istituzioni bancarie e assicurative italiane.\\
 Omicron oltre alle offerte che dedica ai clienti, si occupa anche di garantire un'alta formazione delle proprie risorse, investendo su progetti di ricerca e sviluppo.
 
 \section{Il progetto}
@@ -31,29 +31,33 @@ In seguito ad una richiesta accettata, il Program Manager\textsubscript{g} distr
 L'approccio adottato per la gestione delle pianificazioni delle risorse e la loro disponibilità veniva gestito attraverso fogli Excel compilati e rivisti dai Program manager. Le nuove richieste di pianificazioni vengono comunicate ai Program Manager tramite posta elettronica, telefono e chat, rendendo arduo tenere traccia di tutto.\\
 Il progetto nasce dunque dall’esigenza di semplificare la gestione delle richieste e delle pianificazioni, garantendo una visione più rapida della disponibilità delle risorse.\\
 
-
 \subsection{Il mio ruolo nel progetto}
-Le funzionalità da me sviluppate sono due: le richieste e le pianificazioni di risorse aziendali.\\
-Il tutto è stato realizzato creando nuove tabelle da inserire nel database per la fruizione dei servizi dell'applicativo e lo sviluppo dell'API\textsubscript{g} REST\textsubscript{g}. Gli endpoint\textsubscript{g} dell'API permettono operazioni CRUD\textsubscript{g} su richieste, pianificazioni e milestone.\\
+Le funzionalità da me sviluppate principalmente sono due: le richieste e le pianificazioni di risorse aziendali.\\
+Questo è stato realizzato attraverso la creazione di nuove tabelle da inserire nel database aziendale per supportare l'utilizzo dell'applicativo e lo sviluppo dell'API\textsubscript{g} REST. Gli endpoint dell'API consentono operazioni CRUD\textsubscript{g} su richieste, pianificazioni e milestone, oltre a operazioni di sola lettura sulle anagrafiche dell'azienda.\\
+Dopo aver studiato le tecnologie necessarie, ho iniziato lo sviluppo del prodotto basandomi su due documenti: un documento mock\textsubscript{g} dell'API e un'Analisi dei Requisiti che descriveva il prodotto finale.
 
 
 \section{Organizzazione del testo}
 Questa sezione è dedicata alla spiegazione della struttura del documento, per dare indicazioni su come è organizzato il testo.
 \begin{description}
 
-\item {\hyperref[cap:introduzione]{Capitolo 1:}} introduce il progetto, il mio ruolo all'interno del progetto e il profilo aziendale. Questo capitolo è l'unica parte in cui si parlerà del progetto nella sua totalità rispetto ai capitoli successivi che saranno inerenti esclusivamente al mio lavoro svolto;
+\item [{\hyperref[cap:introduzione]{Capitolo 1: Introduzione}},] introduce il progetto, il mio ruolo all'interno del progetto e il profilo aziendale;
 
-    \item[{\hyperref[cap:analisi-requisiti]{Il secondo capitolo}}] descrive i casi d'uso individuati ed i relativi requisiti;
+    \item [{\hyperref[cap:analisi-requisiti]{Capitolo 2: Analisi dei Requisiti}},] descrive i casi d'uso individuati ed i relativi requisiti;
     
-    \item[{\hyperref[cap:descrizione-stage]{Il terzo capitolo}}] approfondisce ...
+    \item[{\hyperref[cap:tecnologie]{Capitolo 3: Background Tecnologico}},] descrive le tecnologie studiate e gli strumenti utilizzati per sviluppare il prodotto;
     
-    \item[{\hyperref[cap:analisi-requisiti]{Il quarto capitolo}}] approfondisce ...
+    \item[{\hyperref[cap:progettazione]{Capitolo 4: Progettazione}},] descrive il periodo di progettazione dell'architettura su cui poggia il sistema e i concetti fondamentali;
     
-    \item[{\hyperref[cap:progettazione-codifica]{Il quinto capitolo}}] approfondisce ...
+    \item[{\hyperref[cap:api-rest]{Capitolo 5: Sviluppo API REST}},] tratta dell'API sviluppata e della sua implementazione;
     
-    \item[{\hyperref[cap:verifica-validazione]{Il sesto capitolo}}] approfondisce ...
+    \item[{\hyperref[cap:codifica]{Capitolo 6: Codifica}},] descrive la codifica dell'API REST, l'organizzazione del codice, i moduli sviluppati e le parti più rilevanti;
     
-    \item[{\hyperref[cap:conclusioni]{Nel settimo capitolo}}] descrive ...
+    \item[{\hyperref[cap:verifica-validazione]{Capitolo 7: Verifica e Validazione}},] descrive le fasi di Verifica e Validazione del prodotto;
+    
+    \item[{\hyperref[cap:deploy]{Capitolo 8: Deploy dell'applicazione}},] descrive la fase di Deploy dell'applicazione e di come è stata svolta col tutor;
+    
+    \item[{\hyperref[cap:conclusioni]{Capitolo 9: Conclusioni}},] tratta delle considerazioni personali sull'attività svolta;
     
 \end{description}
 
