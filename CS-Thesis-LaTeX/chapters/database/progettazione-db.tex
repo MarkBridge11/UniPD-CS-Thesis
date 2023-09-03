@@ -61,7 +61,7 @@ Data\_inizio & Specifica la data di inizio per l'incarico richiesto\\
 Data\_fine &  Specifica la data di fine per l'incarico richiesto\\
 Note & Note inseribili dal Richiedente\\
 Numero\_figure & Specifica il numero di figure richieste\\
-Tipo & Specifica il tipo di attività della richiesto\\
+Tipo & Specifica il tipo di attività richiesta\\
 Richiedente & UUID del Richiedente della Richiesta <<FK>>\\
 Progetto\_Id & UUID del Progetto associato <<FK>>\\
 \hline
@@ -92,7 +92,7 @@ tipo\_skill\_id & Id della Skill richiesta associata <<PK>> <<FK>>\\
 \end{center}
 
 \subsection*{tipo\_skill <<esterna>>}
-Tabella del database aziendale contenente incarichi eseguibili dalle Figure Professionali.
+Tabella del database aziendale contenente skill conosciute dalle Figure Professionali.
 
 \subsection*{sched\_richiesta\_dettaglio}
 Tabella creata per contenere i dettagli di ogni Figura richiesta. Ogni Figura richiesta corrisponde ad una nuova riga nella tabella.\\
@@ -111,8 +111,8 @@ Seniority & Tipo di Seniority per ogni Figura (Junior, Middle, Senior)\\
 Percentuale & Percentuale di impegno previsto per l'incarico\\
 Effort & Quantità di impegno\\
 Reperibilità & Booleano per indicare la reperibilità di una Figura\\
-Rinnovo & Booleano per indicare \\
-Estensione & Booleano per indicare \\
+Rinnovo & Booleano per indicare il rinnovo dell'impegno della risorsa oltre la data indicata\\
+Estensione & Booleano per che si riferisce all'estensione del lavoro sull'attività corrente\\
 Figura\_professionale\_id & UUID della Figura Professionale associata <<FK>>\\
 Richiesta\_testata\_id & UUID della Richiesta principale a cui è associata <<FK>>\\
 \hline
@@ -136,13 +136,13 @@ Tabella creata per contenere le Pianificazioni. Quando il Program Manager prende
 \textbf{Attributo}  & \textbf{Descrizione}\\
 \hline
 Id & UUID univoco <<PK>>\\
-Ambito & ambito di assegnazione della Pianificazione\\
+Ambito & Ambito di assegnazione della Pianificazione\\
 Note & Note inseribili per la Pianificazione\\
-Delivery & può essere Delivery Core o Delivery Digital\\
-Data\_inizio & data di inizio della Pianificazione\\
-Data\_fine & data di fine della Pianificazione\\
-Giorni & giorni di durata della Pianificazione\\
-Percentuale & indica la percentuale di impegno effettivo\\
+Delivery & Valore che può essere Delivery Core o Delivery Digital\\
+Data\_inizio & Data di inizio della Pianificazione\\
+Data\_fine & Data di fine della Pianificazione\\
+Giorni & Giorni di durata della Pianificazione\\
+Percentuale & Indica la percentuale di impegno effettivo\\
 Reperibilità & Booleano per indicare la reperibilità effettiva di una Figura\\
 Festivi & Booleano per indicare l'opzione delle festività per una Figura\\
 Esperienza & Intero rappresentante gli anni di esperienza\\

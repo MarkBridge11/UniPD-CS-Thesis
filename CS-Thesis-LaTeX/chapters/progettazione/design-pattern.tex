@@ -5,7 +5,7 @@ Ad eccezione dell'ultimo Design Pattern adottato, in riferimento all'elenco sott
 \subsection*{Repository pattern}
 Repository è un pattern ideato per dividere le operazioni di business logic da quelle di persistenza dei dati. Questo pattern fornisce astrazione ai dati nascondendo i dettagli di accesso, facilita il testing, supporta diverse sorgenti di dati e mantiene un codice riutilizzabile in quanto non sarà necessario modificare ampiamente il codice in caso di modifiche alla sorgente dati.\\
 In Spring Boot vengono implementate interfacce annotandole con  l'annotazione \textit{@Repository} ed estendendole con interfacce JPA che permettono l'utilizzo di metodi che forniscono query basilari o la possibilità di creare metodi custom per query personalizzate.
-\subsection*{Dependecy Injection}
+\subsection*{Dependency Injection}
 Dependency Injection è un pattern che inietta una dipendenza in una classe senza sapere l'implementazione effettiva. Questo può avvenire attraverso constructor injection, setter injection o method injection. Gli obiettivi di questo pattern sono: eliminare il forte accoppiamento tra le classi, rendere il codice più manutenibile e più facile da testare.\\
 In Spring Boot risulta evidente tramite l'utilizzo di annotazioni come \textit{@Autowired}, iniettando direttamente le dipendenze necessarie, promuovendo il concetto successivo di Inversion of Control;
 \subsection*{Inversion of Control}
