@@ -17,8 +17,8 @@
 
 \subsubsection*{UC8 - Vis. errore di validazione Richieste}
 \begin{itemize}[label=$\circ$]
-\item \textbf{Attore:} Project Manager o Program Manager;
-\item \textbf{Descrizione:}  questo caso d'uso descrive anche UC12.2. Viene visualizzato un messaggio di errore in caso vengano eseguite funzionalità con dati non validi. Esso rappresenta i seguenti errori comuni all'interno delle Richieste: dati non validi, filtri non valorizzati, entità associate erroneamente, risultati nulli o non valorizzati;
+\item \textbf{Attore:} Project Manager e Program Manager;
+\item \textbf{Descrizione:}  questo caso d'uso descrive anche UC12.2. Viene visualizzato un messaggio di errore in caso vengano eseguite funzionalità con dati non validi. Esso rappresenta i seguenti errori comuni all'interno delle Richieste: dati non validi, filtri non valorizzati, entità associate non valide, risultati nulli o non valorizzati;
 \item \textbf{Precondizioni:} il Program Manger o il Project Manager stanno effettuando operazioni con dati non validi;
 \item \textbf{Postcondizioni:} l'esecuzione della funzionalità è interrotta e viene visualizzato il messaggio di errore;
 \item \textbf{Estensioni:} il caso d'uso non ha estensioni;
@@ -67,8 +67,8 @@
 \item \textbf{Attore:} Project Manager e Program Manager;
 \item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare una lista di Richieste dopo aver inserito filtri e/o una parola nella ricerca rapida e aver selezionato se i filtri applicati devono essere congiunti o disgiunti;
 \item \textbf{Precondizioni:} il richiedente è un Project Manager o un Program Manager;
-\item \textbf{Postcondizioni:} la lista delle Richieste è visualizzabile dal Project Manager o dal Program Manager;
-\item \textbf{Estensioni:} il caso d'uso non ha esclusioni;
+\item \textbf{Postcondizioni:} la lista delle Richieste è visualizzabile dal Project Manager e dal Program Manager;
+\item \textbf{Estensioni:} UC8;
 \item \textbf{Inclusioni:} il caso d'uso non ha inclusioni.
 \end{itemize}
 
@@ -82,9 +82,26 @@
 
 \begin{itemize}[label=$\circ$]
 \item \textbf{Attore:} Project Manager e Program Manager;
-\item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare una lista di Richieste dopo aver inserito filtri e/o una parola nella ricerca rapida e aver selezionato se i filtri applicati devono essere congiunti o disgiunti;
-\item \textbf{Precondizioni:} il richiedente è un Project Manager o un Program Manager;
-\item \textbf{Postcondizioni:} la lista delle Richieste è visualizzabile dal Project Manager o dal Program Manager;
+\item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare la Richiesta selezionata;
+\item \textbf{Precondizioni:} la lista delle Richieste è visualizzabile;
+\item \textbf{Postcondizioni:} la Richiesta selezionata è visualizzabile dal Program Manager e dal Project Manager;
+\item \textbf{Estensioni:} UC12.2;
+\item \textbf{Inclusioni:} il caso d'uso non ha inclusioni.
+\end{itemize}
+
+\subsubsection*{UC12.1.1 - Vis. dettagli Richiesta}
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width=0.6\columnwidth]{usecase/UC12.1} 
+    \caption{Caso d'Uso 12.1 espanso}
+\end{figure}
+
+\begin{itemize}[label=$\circ$]
+\item \textbf{Attore:} Project Manager e Program Manager;
+\item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare la Richiesta selezionata;
+\item \textbf{Precondizioni:} la Richiesta singola è visualizzabile;
+\item \textbf{Postcondizioni:} il Project Manager e il Program Manager possono visualizzare i campi di una Richiesta selezionata;
 \item \textbf{Estensioni:} il caso d'uso non ha esclusioni;
 \item \textbf{Inclusioni:} il caso d'uso non ha inclusioni.
 \end{itemize}
@@ -117,8 +134,8 @@
 \begin{itemize}[label=$\circ$]
 \item \textbf{Attore:} Project Manager e Program Manager;
 \item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare l'audit di una singola Richiesta;
-\item \textbf{Precondizioni:} il richiedente è un Project Manager o un Program Manager;
-\item \textbf{Postcondizioni:} l'audit di una Richiesta è visualizzabile;
+\item \textbf{Precondizioni:} l'audit trail è visualizzabile;
+\item \textbf{Postcondizioni:} l'audit di una singola Richiesta è visualizzabile;
 \item \textbf{Estensioni:} il caso d'uso non ha estensioni;
 \item \textbf{Inclusioni:} il caso d'uso non ha inclusioni.
 \end{itemize}
@@ -126,9 +143,9 @@
 \subsubsection*{UC13.1.1 - Vis. timestamp}
 \begin{itemize}[label=$\circ$]
 \item \textbf{Attore:} Project Manager e Program Manager;
-\item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare il timestamp di una singola traccia di audit di una Richiesta;
-\item \textbf{Precondizioni:} la singola traccia di audit di una Richiesta è visualizzabile;
-\item \textbf{Postcondizioni:} il timestamp della singola traccia di audit è visualizzabile;
+\item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare il timestamp di una singola audit di una Richiesta;
+\item \textbf{Precondizioni:} la singola audit di una Richiesta è visualizzabile;
+\item \textbf{Postcondizioni:} il timestamp della singola audit è visualizzabile;
 \item \textbf{Estensioni:} il caso d'uso non ha estensioni;
 \item \textbf{Inclusioni:} il caso d'uso non ha inclusioni.
 \end{itemize}
@@ -136,9 +153,9 @@
 \subsubsection*{UC13.1.2 - Vis. operazione}
 \begin{itemize}[label=$\circ$]
 \item \textbf{Attore:} Project Manager e Program Manager;
-\item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare l'operazione di una singola traccia di audit di una Richiesta;
-\item \textbf{Precondizioni:} la singola traccia di audit di una Richiesta è visualizzabile;
-\item \textbf{Postcondizioni:} l'operazione della singola traccia di audit è visualizzabile;
+\item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare l'operazione di una singola audit di una Richiesta;
+\item \textbf{Precondizioni:} la singola audit di una Richiesta è visualizzabile;
+\item \textbf{Postcondizioni:} l'operazione della singola audit è visualizzabile;
 \item \textbf{Estensioni:} il caso d'uso non ha estensioni;
 \item \textbf{Inclusioni:} il caso d'uso non ha inclusioni.
 \end{itemize}
@@ -146,9 +163,9 @@
 \subsubsection*{UC13.1.3 - Vis. Richiesta originale}
 \begin{itemize}[label=$\circ$]
 \item \textbf{Attore:} Project Manager e Program Manager;
-\item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare la Richiesta prima che l'operazione venga eseguita;
-\item \textbf{Precondizioni:} la singola traccia di audit di una Richiesta è visualizzabile;
-\item \textbf{Postcondizioni:} la Richiesta originale della singola traccia di audit è visualizzabile;
+\item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare la singola audit di una Richiesta prima che l'operazione venga eseguita;
+\item \textbf{Precondizioni:} la singola audit di una Richiesta è visualizzabile;
+\item \textbf{Postcondizioni:} la Richiesta originale della singola audit è visualizzabile;
 \item \textbf{Estensioni:} il caso d'uso non ha estensioni;
 \item \textbf{Inclusioni:} il caso d'uso non ha inclusioni.
 \end{itemize}
@@ -156,14 +173,14 @@
 \subsubsection*{UC13.1.4 - Vis. Richiesta modificata}
 \begin{itemize}[label=$\circ$]
 \item \textbf{Attore:} Project Manager e Program Manager;
-\item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare la Richiesta dopo che l'operazione è stata eseguita;
-\item \textbf{Precondizioni:} la singola traccia di audit di una Richiesta è visualizzabile;
-\item \textbf{Postcondizioni:} la Richiesta modificata della singola traccia di audit è visualizzabile;
+\item \textbf{Descrizione:} il Project Manager e il Program Manager possono visualizzare la singola audit di una Richiesta dopo che l'operazione è stata eseguita;
+\item \textbf{Precondizioni:} la singola audit di una Richiesta è visualizzabile;
+\item \textbf{Postcondizioni:} la Richiesta modificata della singola audit è visualizzabile;
 \item \textbf{Estensioni:} il caso d'uso non ha estensioni;
 \item \textbf{Inclusioni:} il caso d'uso non ha inclusioni.
 \end{itemize}
 
-\subsubsection*{UC14 - Esportazione report Excel Richieste in base a filtri}
+\subsubsection*{UC14 - Esportazione file Excel Richieste in base a filtri}
 \begin{itemize}[label=$\circ$]
 \item \textbf{Attore:} Project Manager e Program Manager;
 \item \textbf{Descrizione:} il Project Manager e il Program Manager possono esportare in un file Excel scaricabile un report delle Richieste in base a dei filtri inseriti;
