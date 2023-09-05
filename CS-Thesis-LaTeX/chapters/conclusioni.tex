@@ -1,30 +1,65 @@
 \chapter{Conclusioni}
 \label{cap:conclusioni}
 
+Il mio percorso è iniziato con lo studio dei concetti di base e delle tecnologie che avrei utilizzato, sotto la guida del tutor Antonio Fasolato, prima di passare alle esercitazioni sulle tecnologie.\\
+Tra le esercitazioni iniziali, quella su SpringBoot è risultata essere la più complessa. Essendo concetti nuovi che andavo ad affrontare, come l'utilizzo delle annotazioni di SpringBoot, non è stato semplice all’inizio comprendere il funzionamento del framework e questo ha portato ad un maggior investimento di tempo rispetto alle altre esercitazioni. È stato comunque un investimento proficuo poichè ha permesso di formarmi al meglio sulla tecnologia principale e alla base di quello che andavo a sviluppare.\\
+Per poter comprendere al meglio ciò che andavo a creare, è stato svolto un incontro iniziale con il Senior Technical Leader Giovanni Incammicia, che mi ha illustrato le funzionalità del progetto dal lato Front-End. Successivamente è stato quindi deciso di definire le basi del mio prodotto, iniziando dal database e dallo scheletro delle risposte e delle richieste utilizzate dall’API REST.\\
+Come linea guida è stato utilizzato un disegno iniziale dell’API e un'Analisi dei Requisiti fornita che comprendeva anche il lato Front-End.\\
+Da qui è cominciato il mio lavoro sullo sviluppo delle nuove tabelle del database su cui poggiava l’API, integrandole con le tabelle aziendali fino allo sviluppo delle risposte e delle richieste che l’API utilizzava per ogni funzionalità.\\
+Le ultime attività effettuate sono state il testing e la validazione di quanto sviluppato. Tuttavia, lo sviluppo delle funzionalità ed eventuali problematiche implementative, hanno ridotto il tempo disponibile per il testing. Di conseguenza, sebbene sia stato affrontato in modo adeguato a livello teorico, non è stato possibile implementarlo pienamente, come evidenziato nella sezione di \hyperlink{testing}{Testing}.
+
 \section{Consuntivo finale}
-Da completare.
+L’attività di tirocinio è durata 320 ore, come preventivato nel piano di lavoro, iniziando il 19 Giugno e finendo il 24 Agosto. La ripartizione delle ore mostrata nel piano di lavoro, anche se indicativa, è stata abbastanza rispettata.\\
+Inizialmente, le esercitazioni sono state spalmate in modo adeguato nelle prime settimane. Successivamente, il tempo dedicato alla progettazione è stato utilizzato completamente, mentre il tempo riservato al testing non è stato sufficiente, a causa delle problematiche riscontrate nello sviluppo dell'API dovute all'adozione di tecnologie poco conosciute, che hanno causato rallentamenti.
 
 \section{Principali problematiche e soluzioni}
-\subsection{Problematiche}
+\subsection*{Problematiche}
 \begin{enumerate}
 \item Per cominciare lo sviluppo del progetto è stata presa come base un’Analisi dei Requisiti del progetto completo (lato Front-end integrato con lato Back-end) insieme ad una bozza dell'API che dovevo andare a sviluppare. È stato dunque difficile riuscire a far concordare quello che l’API suggeriva di implementare con il requisito completo che l’Analisi dei Requisiti forniva ed arrivare al codice da sviluppare;
 \item Le funzionalità che ho implementato richiedevano l'accesso a dati recuperati da tabelle da me create. Tuttavia queste tabelle necessitavano di dati da altre tabelle già esistenti nel database aziendale. La problematica era quella di identifcare quali tabelle del database aziendale dovevo collegare alle tabelle di mia creazione; 
 \item Nel periodo finale di tirocinio mi sono interfacciato con chi lavorava nel lato Front-End per poter cominciare ad integrare il mio lavoro ed avere una visione più completa di quanto implementato. Per poter fare questo bisognava quindi avere una documentazione dell’API chiara e concordata tra le parti.
 \end{enumerate}
 
-\subsection{Soluzoni}
+\subsection*{Soluzioni}
 \begin{enumerate}
 \item Per lo sviluppo è stato preso in considerazione il mock iniziale dell’API , utilizzando come consulto per un chiarimento sulla funzionalità fornita dall’endpoint, l’Analisi dei Requisiti, come spiegato nella sezione di \hyperlink{validation}{Validazione}. A fine del tirocinio è stata poi creato un nuovo documento dell'API, come descritto nella sezione dello \hyperlink{swagger}{Swagger} nel capitolo di Sviluppo dell’API REST, considerandolo come documento unico per la consultazione dell’API sviluppata;
 \item Per avere una comprensione migliore del database aziendale mi è stato fornito un backup del database di testing aziendale con dati fittizi in cui c’era la possibilità di testare come volevo. Grazie al tutor e agli altri collaboratori ho avuto una visione più completa di come funzionasse il database aziendale e a quali tabelle dovevo fare riferimento;
 \item Per poter comunicare correttamente con gli altri sviluppatori è stato creato il file Swagger. Tuttavia, come spiegato nel capitolo di \hyperlink{validation}{Validazione}, a fine progetto, anche se l’API era chiara e documentata, ci sono state delle discrepanze tra le funzionalità implementate che non hanno permesso la fase di Collaudo.
 \end{enumerate}
 
+\section{Analisi critica del prodotto}
+\subsection{Utilizzo del prodotto}
+Il prodotto sviluppato verrà integrato con la parte di Front-End in seguito ad un refactoring del codice e all'aggiunta delle funzionalità mancanti da chi di dovere. Le tabelle da me create verranno integrate al database aziendale per permettere la fruizione dei servizi dell'API.\\ In seguito all'integrazione delle funzionalità il prodotto sarà disponibile all'utilizzo da parte dei Project Manager e dei Program Manager per semplificare la creazione di richieste e di pianificazioni di risorse aziendali.
 
-\section{Possibili estensioni}
-Da completare.
+\subsection{Valutazione strumenti utilizzati}
+\subsubsection*{Spring}
+L'utilizzo delle annotazioni per fornire un significato preciso, introducendo quindi il design pattern Inversion of Control, e l'iniezione di alcuni componenti all'interno di altri, mi ha messo in difficoltà all'inizio del progetto, rallentando la fase di sviluppo.
+Un elemento che mi ha colpito dell'adozione di Spring è stato come andasse a recuperare le configurazioni di ogni componente e, una volta capito al meglio la funzionalità del framework, quanto fosse facile aggiungerne.
+
+\subsubsection*{Spring Data}
+Mi ha particolarmente colpito Spring Data JPA e le interfacce che offre, come ad esempio \textit{JpaRepository}. All'inizio, comprendere che questa interfaccia consentisse di eseguire operazioni CRUD personalizzate nel database tramite parole chiave non è stato semplice. Tuttavia, una volta acquisita familiarità con questa tecnologia, ho realizzato quanto semplificasse l'accesso al database.
+
+\subsubsection*{Swagger}
+Strumento utilizzato per rappresentare lo sviluppo della mia API. Sono rimasto soddisfatto della completezza dello strumento e della chiarezza della sua interfaccia grafica. All'inizio del progetto, questa chiarezza mi ha aiutato a comprendere al meglio la composizione delle risposte e delle richieste di ogni endpoint del mock dell'API fornito.
+
+\subsection{Completamento dei Requisiti}
+Le funzionalità principali dell’API sono state sviluppate tutte permettendoci di arrivare ad un prodotto funzionante. Tuttavia alcuni requisiti, per mancanza di tempo, non sono stati sviluppati perchè ritenuti meno importanti o perchè necessitavano di tempo che non avevamo più a disposizione. Ad esempio …
+
+\subsection{Possibili estensioni}
+Il mio prodotto non è completo e sicuramente mancano alcune funzionalità che lo porterebbero ad essere un prodotto migliore.\\
+Le possibili estensioni possono essere:
+\begin{itemize}
+\item un refactoring del codice per agevolare il riutilizzo del codice;
+\item implementazione di servizi esterni per la raccolta di informazioni sulle risorse aziendali;
+\item calcolo delle date di fine o dei giorni in base alla disponibilità delle risorse, interfacciandosi con ulteriori software di gestione delle risorse umane o delle attività.
+\end{itemize} 
 
 \section{Conoscenze acquisite}
-Da completare.
+Le conoscenze acquisite in questi anni universitari hanno agevolato di molto la comprensione delle nuove tecnologie che sono andato a studiare. Ritengo di aver acquisito, in seguito a questa esperienza, conoscenze soddisfacenti verso le tecnologie elencate nel capitolo di \hyperlink{tecnologie}{Background Tecnologico}, con particolare rilevanza sottolineo: SpringBoot, Spring Data, Postman e Swagger.
 
 \section{Valutazione personale}
-Da completare.
+Al termine di questa attività, mi ritengo soddisfatto e felice di aver intrapreso un'esperienza di questo tipo. Questa opportunità mi ha aiutato a comprendere come funziona un'azienda nel campo dell'informatica, ma soprattutto mi ha messo alla prova sulle mie conoscenze, contribuendo a consolidarle.\\
+Anche se sono contento di ciò che ho sviluppato e imparato, mi rammarico di non essere riuscito ad osservare direttamente l'integrazione tra ciò che ho implementato io e il Front-End.\\
+Ringrazio il mio tutor, Antonio Fasolato, per la sua disponibilità, pazienza e dedizione nel farmi comprendere concetti a me sconosciuti, incoraggiandomi ad affrontare tutti i problemi cercando di farmi trovare la soluzione da solo prima di fornirmela.\\
+Ringrazio inoltre tutte le persone che ho conosciuto all'interno dell'azienda, apprezzando molto l'accoglienza ricevuta e l'atmosfera che si respirava in azienda.\\
+Considero questa opportunità un'esperienza ottima per il concludere il mio percorso di laurea e ringrazio l'Università e l'azienda Omicron Consulting della possibilità.
