@@ -1,0 +1,123 @@
+\section{Tracciamento dei requisiti}
+Di seguito elenco i requisiti funzionali estrapolati dallo studio degli use case.\\
+Per poterli elencare e distinguere è stata utilizzata il seguente codice identificativo:
+\begin{center}
+\textbf{RF[OB/DE/OP]-[Numero progressivo]}
+\end{center}
+All'interno del codice possiamo osservare RF che significa \textit{Requisito funzionale}, mentre le altre abbreviazioni indicano l'importanza del requisito:
+\begin{itemize}
+\item \textit{OB}, obbligatorio;
+\item \textit{DE}, desiderabile;
+\item \textit{OP}, opzionale.
+\end{itemize}
+La tabella elenca i requisiti per Codice, come descritto, Descrizione del requisito, e la Fonte che può essere una decisione interna o un use case.
+\setlength{\arrayrulewidth}{0.3mm}
+\renewcommand{\arraystretch}{2.5}
+\begin{center}
+\rowcolors{1}{white}{mygray}
+\begin{longtable}{p{2.0cm}|p{8cm}|p{2.7cm}}
+\textbf{Codice}  & \textbf{Descrizione} & \textbf{Fonte}\\
+\hline
+\hypertarget{rf01}{RFOP-01}  &	 Deve essere predisposto un accesso controllato al sistema, che consenta solo a utente autorizzati di effettuare determinate operazioni & Decisione interna \\ 
+RFOB-02  & Il sistema permette la visualizzazione dei dettagli di una Risorsa selezionata & UC1 \\ 
+RFOB-03  & Il sistema permette la visualizzazione del nome della Risorsa & UC1.1 \\ 
+RFOB-04  & Il sistema permette la visualizzazione del cognome della Risorsa & UC1.2 \\ 
+RFOB-05  & Il sistema permette la visualizzazione dell'email della Risorsa & UC1.3 \\ 
+RFOB-06  & Il sistema controlla se si sta eseguendo operazioni nell'ambito Anagrafiche con dati non validi & UC2 \\ 
+RFOB-07  & Il sistema controlla se il dato fornito non ha portato ad alcun risultato & UC2 \\ 
+RFOB-08  & Il sistema permette la visualizzazione della lista di Skills & UC3 \\ 
+RFOB-09  & Il sistema permette la visualizzazione di una singola Skill dalla lista & UC3.1 \\ 
+RFOB-10  & Il sistema permette la visualizzazione diretta di una singola Skill & UC3.1 \\ 
+RFOB-11  & Il sistema verifica che la richiesta alla singola Skill sia valida & UC3.2 \\ 
+RFOB-12  & Il sistema permette la visualizzazione della descrizione della Skill & UC3.1.1 \\ 
+RFOB-13  & Il sistema permette la visualizzazione della lista di Ruoli & UC4 \\ 
+RFOB-14  & Il sistema permette la visualizzazione di uno singolo Ruolo dalla lista & UC4.1 \\ 
+RFOB-15  & Il sistema permette la visualizzazione diretta di un singolo Ruolo & UC4.1 \\ 
+RFOB-16  & Il sistema verifica che la richiesta al singolo Ruolo sia valida & UC4.2 \\ 
+RFOB-17  & Il sistema permette la visualizzazione della descrizione del Ruolo & UC4.1.1 \\ 
+RFOB-18  & Il sistema permette la visualizzazione della lista di Area di Competenza & UC5 \\ 
+RFOB-19  & Il sistema permette la visualizzazione di una singola Area di Competenza dalla lista & UC5.1 \\ 
+RFOB-20  & Il sistema permette la visualizzazione diretta di una singola Area di Competenza & UC5.1 \\ 
+RFOB-21  & Il sistema verifica che la richiesta alla singola Area di Competenza sia valida & UC5.2 \\ 
+RFOB-22  & Il sistema permette la visualizzazione della descrizione dell'Area di Competenza & UC5.1.1 \\ 
+RFOB-23  & Il sistema permette la visualizzazione della lista di Clienti & UC6 \\ 
+RFOB-24  & Il sistema permette la visualizzazione di uno singolo Cliente dalla lista & UC6.1 \\ 
+RFOB-25  & Il sistema permette la visualizzazione diretta di un singolo Cliente & UC6.1 \\ 
+RFOB-26  & Il sistema verifica che la richiesta al singolo Cliente sia valida & UC6.2 \\ 
+RFOB-27  & Il sistema permette la visualizzazione della descrizione del Cliente & UC6.1.1\\ 
+RFOB-28  & Il sistema permette la visualizzazione della codice del Cliente & UC6.1.2 \\ 
+
+RFOB-29  & Il sistema permette la creazione di una nuova Richiesta di Pianificazione & UC7 \\ 
+RFOB-30  & Il sistema controlla che il Richiedente esista & UC8 \\ 
+RFOB-31  & Il sistema controlla che le Figure richieste e le Skill richieste siano coerenti & UC8 \\ 
+RFOB-32  & Il sistema controlla che il Cliente associato sia corretto & UC8 \\ 
+RFOB-33  & Il sistema controlla che il Progetto associato sia corretto & UC8 \\ 
+RFOB-34  & Il sistema controlla che una Richiesta che si vuole eliminare non sia associata ad una Pianificazione & UC8 \\ 
+RFOB-35 & Il sistema controlla che i nuovi valori per la modifica di un singolo campo siano corretti & UC8,UC17,UC28\\
+RFOB-36  & Il sistema controlla che i filtri inseriti siano valorizzati & UC8,UC17,UC28 \\ 
+RFOB-37  & Il sistema controlla che l'entità su cui si va ad operare esista & UC8,UC17,UC28 \\ 
+
+
+RFOB-38  & Il sistema permette l'eliminazione di una Richiesta & UC9 \\ 
+RFOB-39  & Il sistema permette la modifica totale di una Richiesta esistente sovrascrivendola & UC10 \\ 
+RFOB-40  & Il sistema permette la modifica del solo campo Priorità di una Richiesta esistente & UC11 \\ 
+RFOB-41  & Il sistema permette la visualizzazione della lista di Richieste risultanti in seguito ad una richiesta formata da: filtri forniti dall'utente, parola da inserire nella quicksearch e se i filtri debbano essere congiunti o disgiunti & UC12 \\ 
+RFOB-42  & Il sistema permette la visualizzazione di una singola Richiesta dalla lista & UC12.1 \\ 
+RFOB-43  & Il sistema permette la visualizzazione diretta di una singola Richiesta & UC12.1 \\ 
+RFOB-44  & Il sistema verifica che la richiesta alla singola Richiesta sia valida & UC12.2 \\ 
+RFOB-45  & Il sistema permette la visualizzazione dei dettagli della Richiesta selezionata & UC12.1.1 \\ 
+
+
+
+\hypertarget{rf46}{RFDE-46}  & Il sistema permette la visualizzazione della traccia di audit di una Richiesta & UC13 \\ 
+RFDE-47  & Il sistema permette la visualizzazione di un audit di una Richiesta della traccia & UC13.1 \\ 
+RFDE-48  & Il sistema permette la visualizzazione del timestamp dell'operazione in un singolo audit di un audit trail & UC13.1.1 \\ 
+RF4DE-9  & Il sistema permette la visualizzazione dell'operazione in un singolo audit di un audit trail & UC13.1.2 \\ 
+RFDE-50  & Il sistema permette la visualizzazione della Richiesta originale in un singolo audit di un audit trail & UC13.1.3 \\ 
+RFDE-51  & Il sistema permette la visualizzazione della Richiesta modificata in un singolo audit di un audit trail & UC13.1.4 \\ 
+
+
+
+\hypertarget{rf52}{RFDE-52}  & Il sistema permette di esportare un file Excel contenente le Richieste risultanti dai filtri inseriti dall'utente nella richiesta & UC14 \\ 
+RFOB-53  & Il sistema permette la modifica dell'attributo Stato di una Richiesta & UC15 \\ 
+
+RFOB-54  & Il sistema permette la creazione di una nuova Pianificazione di una Risorsa & UC16 \\  
+RFOB-55  & Il sistema controlla che il Progetto associato sia corretto & UC17 \\ 
+RFOB-56  & Il sistema controlla che la Risorsa non sia occupata in quel Ruolo & UC17 \\ 
+RFOB-57  & Il sistema controlla che la Risorsa possa svolgere il Ruolo richiesto & UC17 \\ 
+RFOB-58  & Il sistema permette l'eliminazione di una Pianificazione  & UC18 \\ 
+RFOB-59 & Il sistema permette la modifica totale di una Pianificazione sovrascrivendola & UC19\\
+RFOB-60 & Il sistema permette la modifica delle date di una Pianificazione & UC20\\
+RFOB-61 & Il sistema permette la modifica del campo Festivi di una Pianificazione & UC21\\
+RFDE-62 & Il sistema permette di esportare un file Excel contenente le Pianificazioni risultanti dai filtri inseriti dall'utente nella richiesta & UC22\\
+\hypertarget{rf63}{RFOP-63} & Il sistema permette di esportare un file Excel contenente lo storico delle Pianificazioni relative ad un Progetto, mostrando le Risorse allocate e l'effettivo impiego di queste nelle attività & UC23\\
+\hypertarget{rf64}{RFOP-64} &  Il sistema permette di esportare un file Excel contenente lo storico delle Pianificazioni di una singola Risorsa, visualizzando data fine e data inizio e le relative mansioni & UC24\\
+
+RFDE-65 & Il sistema permette la visualizzazione della traccia di audit di una Pianificazione & UC25\\
+RFDE-66 & Il sistema permette la visualizzazione di un audit di una Pianificazione della traccia & UC25.1\\
+RFDE-67 & Il sistema permette la visualizzazione del timestamp dell'operazione in un singolo audit di un audit trail & UC25.1.1\\
+RFDE-68 & Il sistema permette la visualizzazione dell'operazione in un singolo audit di un audit trail & UC25.1.2\\
+RFDE-69 & Il sistema permette al visualizzazione della Pianificazione originale in un singolo audit di un audit trail & UC25.1.3\\
+RFDE-70 & Il sistema permette al visualizzazione della Pianificazione modificata in un singolo audit di un audit trail & UC25.1.4\\
+RFOB-71 & Il sistema permette la visualizzione della lista di Pianificazioni risultanti in seguito ad una richiesta formata da: filtri forniti dall'utente, parola da inserire nella quicksearch e se i filtri debbano essere congiunti o disgiunti & UC26\\
+RFOB-72 & Il sistema permette la visualizzazione di una singola Pianificazione dalla lista & UC26.1\\
+RFOB-73 & Il sistema permette la visualizzazione diretta di una singola Pianificazione & UC26.1\\
+RFOB-74 & Il sistema verifica che la richiesta alla singola Pianificazione sia valida & UC26.2\\
+RFOB-75 & Il sistema permette la visualizzazione dei dettagli della Pianificazione selezionata & UC26.1.1\\
+RFOB-76 & Il sistema permette di creare una nuova Milestone da associare ad una Pianificazione & UC27\\
+RFOB-77 & Il sistema controlla che il Progetto associato alla Milestone sia corretto & UC28\\
+RFOB-78 & Il sistema controlla che il Commerciale associato sia esistente & UC28\\
+RFOB-79 & Il sistema controlla che la Milestone che si vuole eliminare non sia associata ad una Pianificazione & UC28\\
+RFOB-80 & Il sistema permette la modifica totale di una Milestone sovrascrivendola & UC29\\
+RFOB-81 & Il sistema permette la visualizzazione della lista di Milestone risultanti in seguito ad una richiesta formata da: filtri forniti dall'utente, parola da inserire nella quicksearch e se i filtri debbano essere congiunti o disgiunti & UC30\\
+RFOB-82 & Il sistema permette la visualizzazione di una singola Milestone dalla lista & UC30.1\\
+RFOB-83 & Il sistema permette la visualizzazione diretta di una singola Milestone & UC30.1\\
+RFOB-84 & Il sistema verifica che la richiesta alla singola Pianificazione sia valida & UC30.2\\
+RFOB-85 & Il sistema permette la visualizzazione dei dettagli della Pianificazione selezionata & UC30.1.1\\
+RFOB-86 & Il sistema permette l'eliminazione di una Milestone & UC31\\
+\hline
+\hiderowcolors
+\caption{Lista dei Requisiti}
+\label{tab:Requisiti}
+\end{longtable}
+\end{center}
