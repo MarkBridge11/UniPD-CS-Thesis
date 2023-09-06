@@ -1,14 +1,6 @@
 % \omiss produces '[...]'
 \newcommand{\omissis}{[\dots\negthinspace]}
 
-% Itemize symbols
-% see: https://tex.stackexchange.com/a/62497
-% \renewcommand{\labelitemi}{$\bullet$}
-% \renewcommand{\labelitemii}{$\cdot$}
-% \renewcommand{\labelitemiii}{$\diamond$}
-% \renewcommand{\labelitemiv}{$\ast$}
-
-
 \let\Chaptermark\chaptermark
 % \Chaptername gives current chapter name
 \def\chaptermark#1{\def\Chaptername{#1}\Chaptermark{#1}}
