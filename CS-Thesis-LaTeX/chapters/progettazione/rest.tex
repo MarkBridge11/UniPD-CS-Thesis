@@ -1,12 +1,12 @@
 \section{Architettura REST}
-L’architettura REST, acronimo di “Representational State Transfer”, è un approccio di progettazione per la creazione di servizi web che si basa sui principi dell’HTTP (Hypertext Transfer Protocol).\\
+L’architettura REST, acronimo di “Representational State Transfer”, è un approccio di progettazione per la creazione di servizi web che si basa sui principi dell’HTTP\textsubscript{g} (Hypertext Transfer Protocol).\\
 Le principali caratteristiche di un’architettura REST includono:
 \begin{itemize}
 \item \textbf{Sistema client-server}, dove il client è chi fa le richieste e il server fornisce le risposte;
 \item \textbf{Sistema layered}, perchè possono essere composte da più livelli di servizi indipendenti;
 \item \textbf{Stateless}, significa che il server non contiene client state\textsubscript{g}, quindi ogni richiesta ha abbastanza informazione per il server per processarla;
 \item \textbf{Cacheable}, significa che l’architettura può memorizzare le risposte dei server e riutilizzarle;
-\item \textbf{Resource-based}: questo approccio è considerato tale, dato che si concentra sull’identificazione e la gestione delle risorse all’interno di un sistema. Le risorse vengono identificate da degli URI ed esse possono essere create,aggiornate,richieste o eliminate (operazioni CRUD) attraverso operazioni HTTP standard (POST,PUT,GET,DELETE);
+\item \textbf{Resource-based}: questo approccio è considerato tale, dato che si concentra sull’identificazione e la gestione delle risorse all’interno di un sistema. Le risorse vengono identificate da degli URI\textsubscript{g} ed esse possono essere create,aggiornate,richieste o eliminate (operazioni CRUD) attraverso operazioni HTTP standard (POST,PUT,GET,DELETE);
 \item \textbf{Manipolazione delle risorse}, poichè le risorse sono diverse dalla loro rappresentazione logica, utilizzando formati come JSON o XML.
 \end{itemize}
-Questo stile architetturale è utilizzato soprattutto per la realizzazione di API poichè l'adozione dei principi standard di HTTP mantiene un'interfaccia uniforme e l'approccio resource-based ne semplifica la progettazione, dato che le risorse vengono identificate da URI\textsubscript{g}.
+Questo stile architetturale è utilizzato soprattutto per la realizzazione di API poichè l'adozione dei principi standard di HTTP mantiene un'interfaccia uniforme e l'approccio resource-based ne semplifica la progettazione, dato che le risorse vengono identificate da URI.

@@ -12,7 +12,7 @@ Come descritto nell'immagine l'interazione tra i componenti segue questo flusso:
 \item il client invia una richiesta HTTP e arriva al Controller tramite URL;
 \item il controller estrae i dati della richiesta, effettua controlli di validazione e chiama il metodo del service appropriato;
 \item il metodo del service invocato conterrà la business logic per eseguire la richiesta e ulteriori controlli di validazione;
-\item la/le repository coinvolta/e ottengono i dati richiesti dal database che vengono restituiti al service che li rielaborerà, restituitendo il risultato al controller;
+\item le repository coinvolte ottengono i dati richiesti dal database che vengono restituiti al service che li rielaborerà, restituitendo a sua volta il risultato al controller;
 \item il controller crea una risposta appropriata in formato JSON e la restituisce al client.
 \end{enumerate}
 
@@ -22,12 +22,10 @@ Come descritto nell'immagine l'interazione tra i componenti segue questo flusso:
     \includegraphics[width=0.4\columnwidth]{controllers} 
     \caption{Controller sviluppati}
 \end{figure}
-Il Controller è punto di instradamento per le richieste HTTP. Riceve le richieste dal client, estrae i dati dai parametri della richiesta o dal corpo (body), esegue appropriati controlli di validazione ed infine inoltra le operazioni al Service. I controlli di validazione comprendono: validazione degli ID, validazione del formato delle date inserite, validazione che un dato obbligatorio non sia nullo e controllo che i filtri inseriti non siano non valorizzati.\\
+Il Controller è punto di instradamento per le richieste HTTP. Riceve le richieste dal client, estrae i dati dai parametri della richiesta o dal corpo (body), esegue appropriati controlli di validazione ed infine inoltra le operazioni al Service. I controlli di validazione comprendono: validazione degli ID, validazione del formato delle date inserite, validazione che un dato obbligatorio non sia nullo e controllo che i filtri inseriti siano non nulli e valorizzati.\\
 Ogni Controller è formato dalla sua interfaccia, contenente la firma dei metodi associati agli endpoint, e dalla sua implementazione. Ognuno di essi è annotato con \textit{@RestController}.
 
-\input{chapters/codifica/swagger}
-
-
+\subsubsection{Configurazione di un controller}
 \begin{figure}[H] 
     \centering 
     \includegraphics[width=0.9\columnwidth]{controller-interfaccia} 
@@ -35,7 +33,7 @@ Ogni Controller è formato dalla sua interfaccia, contenente la firma dei metodi
 \end{figure}
 \noindent All'interno dell'interfaccia del Controller troviamo tutti i metodi associati agli endpoint. Per identificare a quale endpoint appartiene vengono utilizzate annotazioni come: \textit{@PostMapping}, \textit{@GetMapping}, \textit{@DeleteMapping}, \textit{@PutMapping} e \textit{@PatchMapping}.\\
 Tramite l'annotazione \textit{@RequestBody} Spring deserializza\textsubscript{g} automaticamente il JSON in un tipo Java, in questo caso \texttt{MilestoneListRequest}.
-Come libreria standard utilizzata per mappare i campi JSON inseriti nella request dall'utente in un oggetto Java, viene utilizzata la libreria Jackson\textsubscript{g}.
+Come libreria standard utilizzata per mappare i campi JSON inseriti nella request dall'utente in un oggetto Java, viene utilizzata la libreria standard Jackson.
 
 \begin{figure}[H] 
     \centering 
@@ -44,6 +42,8 @@ Come libreria standard utilizzata per mappare i campi JSON inseriti nella reques
 \end{figure}
 \noindent Nelle classi \texttt{ControllerImpl} troviamo l'implementazione dei metodi dell'interfaccia, controlli di validazione che possono lanciare eccezioni e il metodo del Service utilizzato.\\
 In questo code snippet vediamo il controllo di validazione su l'Id del Progetto associato ad una Milestone. Se passerà il controllo, allora verrà inoltrata la richiesta al Service.
+
+\input{chapters/codifica/swagger}
 
 \subsection{Repository}
 \begin{figure}[H] 
@@ -77,14 +77,14 @@ Questa casistica è la più frequente poiché permette di effettuare le semplici
     \includegraphics[width=0.95\columnwidth]{service-delete-example} 
     \caption{Metodo deleteMilestone() nel Service}
 \end{figure}
-\noindent In questo code snippet possiamo osservare come funziona il metodo \texttt{deleteMilestone()} all'interno del \texttt{MilestoneService}.Viene eseguito un controllo tramite \texttt{findById()} per verificare se l'ID è presente nel database e in caso negativo viene lanciata un'eccezione che impedisce l'eliminazione della Milestone. Questa eccezione comporta la restituzione di un codice di errore 404 per informare l'utente che la Milestone con l'ID specificato non esiste nel database e quindi non può essere cancellata.\\
+\noindent In questo code snippet possiamo osservare come funziona il metodo \texttt{deleteMilestone()} all'interno del \texttt{MilestoneService}. Viene eseguito un controllo tramite \texttt{findById()} per verificare se l'ID è presente nel database e in caso negativo viene lanciata un'eccezione che impedisce l'eliminazione della Milestone. Questa eccezione comporta la restituzione di un codice di errore 404 per informare l'utente che la Milestone con l'ID specificato non esiste nel database e quindi non può essere cancellata.\\
 Il controllo successivo verifica che la Milestone non sia associata ad una Pianificazione ed in caso di esito positivo lancia un'eccezione che contiene un codice di errore 409.\\
 Se tutti questi controlli non interrompono l'esecuzione, allora avverrà la cancellazione nel database tramite il metodo \texttt{deleteById()} della Milestone.\\
 Viene infine generata la response da ritornare al Controller formata da un oggetto "metadata" vuoto, dato che non ci sono stati errori, e una nuova \texttt{MilestoneResponse}, contenente la Milestone rimossa che comporrà l'oggetto "data".
 
 \subsubsection{Esempio di creazione query con filtri}
-Un'altra logica rilevante utilizzata nei Service è quella che server a generare una query dinamica in base ai filtri inseriti dall'utente.\\
-Dato che la query con Spring Data JPA sarebbe stata troppo lunga e poco leggibile, è stato deciso di crearla tramite \textit{CriteriaBuilder}\textsubscript{g} e \textit{CriteriaQuery}\textsubscript{g}, che permettono di creare query dinamiche in modo programmatico.
+Un'altra logica rilevante utilizzata nei Service è quella che serve a generare una query dinamica in base ai filtri inseriti dall'utente.\\
+Dato che la query con Spring Data JPA sarebbe stata troppo lunga e poco leggibile, è stato deciso di crearla tramite le interfacce JPA \textit{CriteriaBuilder} e \textit{CriteriaQuery}, che permettono di creare query dinamiche in modo programmatico.
 \begin{figure}[H] 
     \centering 
     \includegraphics[width=0.90\columnwidth]{criteriaquery} 
@@ -92,7 +92,13 @@ Dato che la query con Spring Data JPA sarebbe stata troppo lunga e poco leggibil
 \end{figure}
 \noindent Nel seguente estratto di codice ho ridotto la complessità mantenendo solo le parti essenziali che illustrano il funzionamento.\\
 Nel primo blocco di istruzioni inizializziamo \textit{CriteriaBuilder}, una nuova \textit{CriteriaQuery} e selezioniamo tutte le \texttt{Milestone} uniche.\\
-Nelle successive istruzioni andiamo a creare tutte le operazioni di \textit{Join<>} tra le entità, inseriamo dei predicati (condizioni logiche, utili quando la query è dinamica) nella clausola \texttt{where()} della query e infine generiamo la query simulando la paginazione, recuperando la lista di risultati in una lista di \texttt{Milestone}.
+Nelle successive istruzioni andiamo a creare tutte le operazioni di \textit{Join<>} tra le entità, inseriamo dei predicati (condizioni logiche, utili quando la query è dinamica) nella clausola \texttt{where()} della query e infine generiamo la query simulando la paginazione, recuperando la lista di risultati in una lista di \texttt{Milestone}.\\
+Questa logica veniva utilizzata per costruire la query dinamica relativa agli endpoint che finiscono con \texttt{/list}, per Richiesta, Pianificazioni e Milestone.
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width=0.9\columnwidth]{query-dinamica} 
+    \caption{Query dinamica}
+\end{figure}
 
 \subsubsection{Esempio di creazione file Excel}
 \begin{figure}[H] 
@@ -103,15 +109,15 @@ Nelle successive istruzioni andiamo a creare tutte le operazioni di \textit{Join
 L'ultima logica rilevante è quella utilizzata per la creazione di un file Excel. In questo frammento di codice è stato semplificato il funzionamento per mostrare i punti cardine.\\
 La sintassi utilizzata dalla libreria Apache POI è molto semplice e intuitiva. Nelle prime righe andiamo a creare una nuova riga \texttt{Row} per l'header e una che conterrà valori. Per ogni riga bisognerà creare poi una cella \texttt{Cell}. Successivamente è possibile applicare uno stile alla cella \texttt{CellStyle} e il suo valore.\\
 Dopo che il file Excel è stato compilato, il contenuto verrà scritto su un array di byte di tipo \texttt{ByteArrayOutputStream}.
-Questo array verrà restituito al Controller che specificherà nella risposta HTTP fornita:
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width=0.9\columnwidth]{risposta-excel} 
+    \caption{Response fornita dal Controller contenente il file Excel da scaricare}
+\end{figure}
+\noindent Questo array verrà restituito al Controller che specificherà nella risposta HTTP fornita:
 \begin{enumerate}
 \item l'intestazione "Content-Disposition" nel formato "attachment", che indica al browser che il contenuto dovrebbe essere trattato come un allegato scaricabile;
 \item imposta il tipo di contenuto del file, in questo caso Excel con estensione .xls;
 \item specifica nel body della risposta l'array ritornato dal Service.
 \end{enumerate}
 Il client vedrà la finestra di dialogo di download nel browser e potrà scaricare il file.
-\begin{figure}[H] 
-    \centering 
-    \includegraphics[width=1.00\columnwidth]{risposta-excel} 
-    \caption{Response fornita dal Controller contenente il file Excel da scaricare}
-\end{figure}

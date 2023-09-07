@@ -6,9 +6,9 @@ Questo capitolo descrive come è stata attuata la verifica e la validazione all'
 Durante tutto il periodo di tirocinio, ad ogni avanzamento di funzionalità e quindi cambio di requisito da soddisfare, con il tutor Antonio Fasolato è stato verificato che il codice sviluppato fino a quel momento fosse conforme con quanto aspettato e producesse output veritieri. Questo era aiutato inoltre dai controlli di validazione effettuati nei vari Controller e ulteriori controlli inseriti nei Service per garantire l’utilizzo di valori corretti.\\
 Svolgendo le seguenti analisi regolarmente è stato possibile identificare e correggere errori evitando la loro propagazione nel corso della Codifica.
 \subsection{Analisi statica}
-Veniva effettuata un’analisi statica, che non richiede l'esecuzione del software, sul codice prodotto eseguendo prima un inspection, una lettura mirata e focalizzata sugli errori più noti e probabili, andando verso errori più specifici in base alla funzionalità implementata.
+È stata condotta un'analisi statica del codice prodotto mediante un processo di inspection, che consisteva in una revisione mirata e concentrata sui più comuni e probabili errori, prima di passare a quelli più specifici in base alla funzionalità implementata. Questa analisi non richiedeva l'esecuzione effettiva del software.
 \subsection{Analisi dinamica}
-L'analisi dinamica consiste nell'effettuare test sul prodotto in esecuzione. In caso di errore veniva eseguita un’ulteriore verifica successivamente alla mia correzione dell’errore che si era presentato.\\
+L'analisi dinamica implica l'esecuzione di test sul prodotto in esecuzione. In caso di errore, veniva eseguita una verifica aggiuntiva dopo che avevo corretto l'errore riscontrato.\\
 \subsubsection{Debugging}
 Per identificare al meglio un errore a run-time veniva usata la tecnica di debugging: consiste nell'individuazione e la correzione di errori che provocano anomalie rilevate durante l'esecuzione del programma. Questa tecnica è possibile grazie allo strumento di debugging che offre IntelliJ che permette di inserire dei breakpoint, cioè dei punti di interruzione nel codice, che non appena raggiunti durante l'esecuzione, sospende l'esecuzione ed è possibile ispezionare lo stato delle variabili, delle strutture dati e lo stack trace delle chiamate.\\ 
 \subsubsection{Postman}
@@ -16,7 +16,7 @@ Per testare l'API veniva utilizzato il software Postman. Esso permetteva di osse
 
 \begin{figure}[H] 
     \centering 
-    \includegraphics[width=0.95\columnwidth]{utilizzo-postman} 
+    \includegraphics[width=1.05\columnwidth]{utilizzo-postman-2} 
     \caption{Interfaccia Postman}
 \end{figure}
 \noindent Per testare un endpoint si andava a configurare Postman nelle seguenti sezioni:
@@ -49,7 +49,7 @@ Qui sotto riporto un code snippet dei controlli eseguiti nel test relativo al me
     \caption{Code snippet test di creazione di una nuova Milestone}
 \end{figure}
 
-\noindent In questo snippet possiamo osservare come è stato forzato il lancio dell’eccezione quando si va a creare una Milestone con Id già esistente, controllando che sia stata proprio quella l’eccezione lanciata dal metodo.\\
+\noindent In questo frammento di codice possiamo osservare come è stato forzato il lancio dell’eccezione quando si va a creare una Milestone con Id già esistente, controllando che sia stata proprio quella l’eccezione lanciata dal metodo.\\
 Mockito offre strumenti, come il metodo \texttt{when()}, che consentono di effettuare stubbing\textsubscript{g} dei metodi, simulando il loro comportamento. Questo permette di definire come tali metodi dovrebbero rispondere quando vengono invocati, restituendo risultati specifici anziché eseguire il codice reale.\\ 
 Un ulteriore metodo fornito da Mockito è \texttt{verify()}, utilizzato per controllare che il metodo \texttt{save()} della repository della Milestone venga chiamato una sola volta. Con \texttt{ArgumentCaptor<>} (che permette di raccogliere i parametri passati in una funzione) andiamo a "catturare" la Milestone salvata col metodo \texttt{save()}.\\
 Per accertare che questa parte di test abbia avuto successo è stato verificato che la response ricevuta dal metodo non fosse vuota e, dato che il DTO restituito differisce per alcune caratteristiche dall’istanza completa di una Milestone, non è stato possibile un confronto intero tra i due oggetti, ed è stato ritenuto esaustivo garantire l’uguaglianza dei due Id. Queste verifiche sono state effettuate tramite metodi di asserzione forniti da JUnit.

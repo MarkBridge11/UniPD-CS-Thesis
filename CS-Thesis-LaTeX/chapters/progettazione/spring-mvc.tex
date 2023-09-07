@@ -12,7 +12,7 @@ Il Modello o Model in inglese, rappresenta i dati e i metodi per accedere ai dat
 Nel contesto dello sviluppo di un'API REST, il Model contiene dati che vengono elaborati e restituiti dall'API.\\
 All'interno del progetto il Model è formato dai seguenti elementi.
 \subsubsection*{Entità}
-Le entità sono risorse rappresentate con classi Java segnate a class level\textsubscript{g} con l'annotazione\textsubscript{g} \textit{@Entity}. Questa annotazione viene utilizzata per identificare una classe che è mappata\textsubscript{g} su una tabella nel database. All'interno di queste classi, vengono dichiarati gli attributi corrispondenti alla tabella di riferimento utilizzando annotazioni JPA appropriate, e vengono gestite le relazioni tra le tabelle attraverso altre annotazioni.
+Le entità sono risorse rappresentate con classi Java segnate a class level\textsubscript{g} con l'annotazione\textsubscript{g} \textit{@Entity}. Questa annotazione viene utilizzata per identificare una classe che è mappata su una tabella nel database. All'interno di queste classi, vengono dichiarati gli attributi corrispondenti alla tabella di riferimento utilizzando annotazioni JPA appropriate, e vengono gestite le relazioni tra le tabelle attraverso altre annotazioni.
 \subsubsection*{Repository}
 Le repository implementate nel progetto gestiscono l'accesso ai dati e definiscono metodi per eseguire operazioni di base sui dati, come l'inserimento, la modifica, la cancellazione e la ricerca. Tutto questo è stato possibile all'interno del progetto estendendo interfacce JPA, che consentono di eseguire operazioni in una base di dati senza scrivere codice SQL.
 \subsubsection*{DTO}
@@ -27,7 +27,7 @@ Il Controller gestisce il flusso dell'applicazione. Esso riceve i comandi dell'u
 All'interno del meccanismo di Spring MVC il Controller gestisce le richieste HTTP in arrivo, selezionando il Controller adeguato. Sono quindi responsabili di ricevere le richieste, elaborarle e restituire le risposte corrispondenti.\\
 All'interno del progetto il Controller è formato dai seguenti elementi.
 \subsubsection*{Controller}
-I Controller contengono i metodi a cui vengono associati i percorsi delle richieste HTTP. Esso interpreta i parametri che possono provenire dall'URL o dal corpo della richiesta. Internamente a questi metodi viene richiamato il Service appropriato per eseguire operazioni di business logic al risultato finale da restituire.\\
+I Controller contengono i metodi a cui vengono associati i percorsi delle richieste HTTP. Esso interpreta i parametri che possono provenire dall'URL\textsubscript{g} o dal corpo della richiesta. Internamente a questi metodi viene richiamato il Service appropriato per eseguire operazioni di business logic al risultato finale da restituire.\\
 Per garantire che i dati inseriti dagli utenti o provenienti da richieste siano conformi alle aspettative e non causino errori vengono inseriti dei controlli di validazioni all'interno dei metodi del Controller.
 \subsubsection*{Service}
 I Service eseguono operazioni complesse ed elaborazioni di dati, gestendo la business logic dell'applicazione. Essi interagiscono con i Repository per recuperare dati dal database e vengono richiamati all'interno dei metodi del Controller. Contengono ulteriori controlli di validazione per verificare la correttezza dei dati utilizzati.

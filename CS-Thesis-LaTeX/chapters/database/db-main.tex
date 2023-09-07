@@ -1,11 +1,11 @@
 \chapter{Modello dati}
 \label{cap:database}
 Questo capitolo descrive il database utilizzato all'interno del progetto.\\
-Verrà descritto inizialmente la configurazione di Docker, passando per la struttura del database spiegata e per la gestione dei log nel database.\\
+Verrà descritto inizialmente la configurazione di Docker, passando per la struttura del database e la gestione dei log nel database.\\
 
 \section{Configurazione di Docker}
 I container Docker offrono un'isolamento completo dell'ambiente, che aiuta a evitare conflitti di dipendenze e interferenze con altre applicazioni o servizi che potrebbero essere presenti sul sistema. Per questo motivo si è deciso di utilizzare l'approccio di sandboxing\textsubscript{g} che offre Docker, poichè l'utilizzo di container consente di isolare le applicazioni e i servizi in ambienti virtualizzati, condividendo il kernel del sistema operativo host ma separando le loro risorse e i loro processi.\\
-Dato che le tabelle di mia creazione dovevano integrarsi con il database aziendale, tramite il tool Docker Compose\textsubscript{g} e un file di configurazione \textit{docker-compose.yaml}, è stato possibile avviare un nuovo container contenente un'immagine di Microsoft SQL Server, che forniva un backup del database aziendale con dati e tabelle.\\
+Dato che le tabelle di mia creazione dovevano integrarsi con il database aziendale, tramite il tool Docker Compose e un file di configurazione \textit{docker-compose.yaml}, è stato possibile avviare un nuovo container contenente un'immagine di Microsoft SQL Server, che forniva un backup del database aziendale con dati e tabelle.\\
 
 \input{chapters/database/progettazione-db}
 
@@ -16,27 +16,23 @@ Una tabella di log in un database è una struttura dati che registra le attivit�
 \item Risoluzione dei problemi, possono aiutare gli amministratori del database a capire la radice del problema, facilitando la risoluzione di bug;
 \item Recupero dati, ritornano utili in caso di perdita di dati o di necessità a riprendere dati cancellati o modificati;
 \end{itemize} 
-Per soddisfare il requisito X è stata creata una tabella di log per le Pianificazioni.
-Per limiti di tempo non è stata creata e gestita anche l'altra tabella di log delle Richieste.\\
+Per soddisfare il requisito \hyperlink{rf65}{RFDE-65} è stata creata una tabella di log per le Pianificazioni.
+Per limiti di tempo non è stata creata e gestita anche l'altra tabella di log delle Richieste come scritto nel requisito \hyperlink{rf46}{RFDE-46}.\\
 \subsection{Tabella PianificazioniAudit}
-La tabella di log per le Pianificazioni contiene tutti gli attributi di Pianificazioni ma duplicati.Si distinguono in attributi "old", facendo riferimento ai valori della Pianificazione prima dell'operazione e "new", facendo riferimento ai valori della Pianificazione dopo l'operazione. La chiave primaria della tabella è una chiave composta da: Id della Pianificazione e Timestamp dell'attività. Si possono notare anche gli attributi "Utente", per tenere traccia di chi ha effettuato la modifica e l'attributo "Operazione", per indicare se si tratta di un'operazione di cancellazione,inserimento o modifica.\\
-%\begin{figure}[H] 
-%    \centering 
-%    \includegraphics[width=1.1\columnwidth]{DB_Proj_noaudit} 
-%    \caption{Schema Database}
-%\end{figure}
-Il popolamento di questa tabella avviene tramite un trigger\textsubscript{g} che si avvia non appena c'è un inserimento, un update o una delete di una riga nella tabella delle Pianificazioni.
+La tabella di log per le Pianificazioni contiene tutti gli attributi di Pianificazioni, ma duplicati. Si distinguono in attributi "old", facendo riferimento ai valori della Pianificazione prima dell'operazione e "new", facendo riferimento ai valori della Pianificazione dopo l'operazione. La chiave primaria della tabella è una chiave composta da: Id della Pianificazione e timestamp dell'attività. Si possono notare anche gli attributi "Utente", per tenere traccia di chi ha effettuato la modifica e l'attributo "Operazione", per indicare se si tratta di un'operazione di cancellazione,inserimento o modifica.\\
+
+\noindent Il popolamento di questa tabella avviene tramite un trigger\textsubscript{g} che si avvia non appena c'è un inserimento, un update o una delete di una riga nella tabella delle Pianificazioni.
 \begin{figure}[H] 
     \centering 
-    \includegraphics[width=0.9\columnwidth]{trigger-core} 
+    \includegraphics[width=1.0\columnwidth]{trigger-core} 
     \caption{Codice Trigger: Inizializzazione variabili}
 \end{figure}
-\noindent Dopo aver definito le variabili, identificato l'operazione effettuata tramite un controllo, vengono eseguiti gli inserimenti nei campi appositi all'interno della tabella.
+
 \begin{figure}[H] 
     \centering 
-    \includegraphics[width=0.7\columnwidth]{trigger-insert} 
+    \includegraphics[width=0.8\columnwidth]{trigger-insert} 
     \caption{Codice Trigger: Inserimento dei valori nella tabella di log}
 \end{figure}
-
+\noindent Dopo aver definito le variabili, identificato l'operazione effettuata tramite un controllo, vengono eseguiti gli inserimenti nei campi appositi all'interno della tabella.
 
 

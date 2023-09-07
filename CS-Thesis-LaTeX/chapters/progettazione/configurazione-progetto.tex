@@ -36,7 +36,7 @@ All'interno di questo file si possono trovare i seguenti tag:
 \begin{itemize}
 \item \textit{spring-boot-starter-web}, per utilizzare il framework Spring MVC per la creazione di applicazioni Web;
 \item \textit{spring-boot-starter-jpa}, per la persistenza dei dati;
-\item \textit{spring-boot-devtools}, offre tools per migliorare il processo di sviluppo come live reload e rilascio automatico;
+\item \textit{spring-boot-devtools}, offre tools per migliorare il processo di sviluppo;
 \item \textit{spring-boot-starter-test}, per includere librerie di testing.
 \end{itemize}
 
@@ -62,44 +62,6 @@ Per il testing sono state aggiunte:
 \item \textit{h2}, si tratta della dipendenza per la libreria H2 Database Engine, che è un database SQL. Utilizzato con scope "test" per crearne un'istanza temporanea e utilizzarlo nei test.
 \end{itemize}
 
-%\begin{lstlisting}[language=XML,caption = pom.xml con dipendenze selezionate]
-%	<properties>
-%		<java.version>17</java.version>
-%	</properties>
-%	<dependencies>
-%		<dependency>
-%			<groupId>org.springframework.boot</groupId>
-%			<artifactId>spring-boot-starter-data-jpa</artifactId>
-%		</dependency>
-%		<dependency>
-%			<groupId>org.springframework.boot</groupId>
-%			<artifactId>spring-boot-starter-web</artifactId>
-%		</dependency>
-%
-%		<dependency>
-%			<groupId>org.springframework.boot</groupId>
-%			<artifactId>spring-boot-devtools</artifactId>
-%			<scope>runtime</scope>
-%			<optional>true</optional>
-%		</dependency>
-%		<dependency>
-%			<groupId>org.springframework.boot</groupId>
-%			<artifactId>spring-boot-starter-test</artifactId>
-%			<scope>test</scope>
-%		</dependency>
-%	</dependencies>
-%
-%	<build>
-%		<plugins>
-%			<plugin>
-%				<groupId>org.springframework.boot</groupId>
-%				<artifactId>spring-boot-maven-plugin</artifactId>
-%			</plugin>
-%		</plugins>
-%	</build>
-%
-%\end{lstlisting}
-
 \subsubsection{Application.properties}
 \noindent Il secondo file qui sotto rappresentato è il file configurazione \textit{application.properties}. Di seguito riporto il file che ho utilizzato nel progetto:
 \begin{figure}[H] 
@@ -107,33 +69,12 @@ Per il testing sono state aggiunte:
     \includegraphics[width=0.85\columnwidth]{foto_application_properties} 
     \caption{Foto application.properties configurato e utilizzato}
 \end{figure}
-%\begin{lstlisting}[language = XML, caption = application.properties del progetto]
-%logging.level.root=INFO
-%logging.level.org.springframework=ERROR
-%logging.level.org.hibernate=TRACE
-%logging.level.it.omicronconsulting=DEBUG
-%logging.level.org.hibernate.SQL=DEBUG
-%logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
-%
-%
-%spring.datasource.url=jdbc:sqlserver://localhost;databaseName=DBDELIVERONE;Trusted_Connection=False;\MultipleActiveResultSets=true;encrypt=true;trustServerCertificate=true;
-%spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
-%spring.datasource.username=SA
-%spring.datasource.password=Password.1
-%
-%
-%spring.jpa.properties.hibernate.format_sql=true
-%spring.jpa.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
-%spring.jpa.hibernate.ddl-auto=validate
-%
-%springdoc.swagger-ui.filter=true
-%springdoc.swagger-ui.tagsSorter=alpha
-%\end{lstlisting}
+
 \noindent Possiamo notare come il file utilizzi un formato di configurazione basato su chiavi e valori. Le chiavi rappresentano le diverse proprietà di configurazione dell'applicazione, mentre i valori rappresentano le impostazioni specifiche.\\
 Nel file possiamo notare le seguenti chaivi:
 \begin{itemize}
 \item \textit{logging.level}, servono per configurare il livello di dettaglio dei log per diverse classi o package all'interno dell'applicazione;
 \item \textit{spring.datasource}, servono per collegarsi ad un database, in questo caso locale, inserendo username e password e driver di MSSQL;
-\item \textit{spring.jpa.properties.hibernate}, serveono per configurare le impostazioni di Hibernate, impostando la validazione schema-entità, il dialetto\textsubscript{g} del server SQL e il suo livello di log;
+\item \textit{spring.jpa.properties.hibernate}, serveono per configurare le impostazioni di Hibernate tra cui la validazione schema-entità, il dialetto\textsubscript{g} del server SQL e il suo livello di log;
 \item \textit{springdoc.swagger-ui}, libreria che fornisce integrazione tra Spring Boot e Swagger UI.  
 \end{itemize}. 

@@ -1,12 +1,13 @@
 \section{Progettazione del database}
 \begin{figure}[H] 
     \centering 
-    \includegraphics[width=1.1\columnwidth]{DB_Proj_noaudit} 
+    \includegraphics[width=1.2\columnwidth]{DB_Proj_noaudit} 
     \caption{Schema Database}
 \end{figure}
 \noindent Nel seguente disegno si può notare il database su cui poggia l'API.\\
 È stata inserita una nomenclatura <<esterna>> per indicare le tabelle proveniente dal database aziendale. Per ogni tabella creata da me è stato deciso di utilizzare il prefisso "sched\_".\\
-Di seguito elenco l'utilizzo delle tabelle dei loro attributi:
+È stato utilizzato un UUID\textsubscript{g} come chiave primaria per ogni tabella.\\
+Di seguito elenco l'utilizzo delle tabelle create da me e quelle del database aziendale, non trattando però gli attributi all'interno di quest'ultime:
 
 \subsection*{tecnologia <<esterna>>}
 Tabella del database aziendale utilizzata per mostrare le skill che una Risorsa possiede.
@@ -123,7 +124,7 @@ Richiesta\_testata\_id & UUID della Richiesta principale a cui è associata <<FK
 \end{center}
 
 \subsection*{figure\_professionali <<esterna>>}
-Tabella del database aziendale che contiene le caratteristiche delle Figure Professionali associabili ad una determinata skill richiesta.
+Tabella del database aziendale che contiene le Figure Professionali associabili ad una determinata skill richiesta.
 
 \subsection*{sched\_pianificazione}
 Tabella creata per contenere le Pianificazioni. Quando il Program Manager prende in carico una Richiesta posta dal Project Manager, per ogni Figura richiesta, ne crea una Pianificazione associando una Risorsa libera adeguata.
@@ -167,7 +168,7 @@ Risorsa\_id & UUID della Risorsa pianificata <<FK>>\\
 
 \subsection*{sched\_milestone}
 Tabella contenente i milestone associabili alla tabella delle Pianificazioni.\\
-Una Milestone non può essere associata ad una Pianificazione se quest'ultima non è associata ad un Progetto.
+Una Milestone non può essere associata ad una Pianificazione se quest'ultima non è associata ad un Progetto.\\
 
 \setlength{\arrayrulewidth}{0.3mm}
 \renewcommand{\arraystretch}{2.5}

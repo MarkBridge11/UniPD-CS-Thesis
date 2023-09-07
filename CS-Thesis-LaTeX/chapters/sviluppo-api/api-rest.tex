@@ -1,5 +1,5 @@
 \section{Convenzioni di denominazione REST}
-Buona prassi nella creazione di un'API REST è il rispetto di convenzioni per la nomenclatura degli endpoint. Sebbene non esista un'unica convenzione obbligatoria, esistono delle best practices\textsubscript{g} per garantire una facile lettura e comprensibilità per agevolare gli sviluppatori che adoperano l'API.\\
+Buona prassi nella creazione di un'API REST è il rispetto di convenzioni per la nomenclatura degli endpoint. Sebbene non esista un'unica convenzione obbligatoria, esistono delle best practices per garantire una facile lettura e comprensibilità per agevolare gli sviluppatori che adoperano l'API.\\
 Le seguenti convenzioni sono state rispettate nello sviluppo dell'API:
 \begin{itemize}
 \item  pluralizzare le risorse, per distinguere se si fa riferimento ad una lista di una determinata risorsa o ad una singola risorsa;
@@ -38,17 +38,18 @@ PATCH  &     Utilizzato per effettuare aggiornamenti parziali a una risorsa esis
 %Per garantire una lettura chiara dello stato dell'operazione richiesta, sono stati utilizzati i seguenti codici di risposta HTTP. Questi codici 
 
 \section{Endpoint sviluppati}
-\noindent In questa sezione si trovano le descrizioni di tutti gli endpoint implementati, suddivisi in base all'ambito di interesse. Sarà fornito anche il verbo HTTP e il percorso necessario per effettuare ciascuna richiesta.\\
+\noindent In questa sezione si trovano le descrizioni di tutti gli endpoint\textsubscript{g} implementati, suddivisi in base all'ambito di interesse. Sarà fornito anche il verbo HTTP e il percorso necessario per effettuare ciascuna richiesta.\\
 \subsection*{Anagrafiche}
 Questi endpoint vengono utilizzati dal Program Manager per effettuare operazioni di lettura sulle anagrafiche aziendali. 
 \setlength{\arrayrulewidth}{0.3mm}
 \renewcommand{\arraystretch}{2.5}
 \begin{center}
 \rowcolors{1}{white}{mygray}
-\begin{longtable}{p{1.3cm}|p{4.95cm}|p{5.7cm}}
+\begin{longtable}{p{1.5cm}|p{4.97cm}|p{5.7cm}}
 \textbf{Verbo}  & \textbf{Path} & \textbf{Descrizione}\\
 \hline
-GET    & \texttt{/area-competenza/\{id\}} & Permette la lettura di un'Area di Compentenza dato l'ID\\
+GET    & \texttt{/area-competenza/\{id\}} & Permette la lettura di un'Area di Competenza dato l'ID\\
+GET    & \texttt{/area-competenza/\{id\}} & Permette la lettura di tutte le Aree di Competenza\\
 GET    & \texttt{/clienti} & Permette la lettura da DB di tutti i Clienti ottenendo come risposta la lista di tutti i Clienti\\
 GET    & \texttt{/clienti/\{id\}} & Permette la lettura da DB di un Cliente dato l'Id ottenendo come risposta il Cliente corrispondente\\
 GET    & \texttt{/risorse/\{id\}} & Permette la lettura da DB di un Risorsa dato l'Id ottenendo come risposta la Risorsa corrispondente\\
@@ -65,11 +66,12 @@ GET    & \texttt{/skill/\{id\}} & Permette la lettura da DB di una Skill dato l'
 
 \subsection*{Milestones}
 Questi endpoint consentono la creazione, lettura, modifica ed eliminazione di Milestones. Vengono utilizzati principalmente dal Program Manager.
+\pagebreak
 \setlength{\arrayrulewidth}{0.3mm}
 \renewcommand{\arraystretch}{2.5}
 \begin{center}
 \rowcolors{1}{white}{mygray}
-\begin{longtable}{p{1.3cm}|p{4.95cm}|p{5.7cm}}
+\begin{longtable}{p{1.5cm}|p{4.97cm}|p{5.7cm}}
 \textbf{Verbo}  & \textbf{Path} & \textbf{Descrizione}\\
 \hline
 POST    & \texttt{/milestones} & Permette l'inserimento di una nuova Milestone, inserendo il Progetto associato, il Commerciale, la Pianificazione e altri dettagli.\\
@@ -91,14 +93,14 @@ Vengono utilizzati principalmente dal Program Manager.
 \renewcommand{\arraystretch}{2.5}
 \begin{center}
 \rowcolors{1}{white}{mygray}
-\begin{longtable}{p{1.3cm}|p{4.95cm}|p{5.7cm}}
+\begin{longtable}{p{1.5cm}|p{4.97cm}|p{5.7cm}}
 \textbf{Verbo}  & \textbf{Path} & \textbf{Descrizione}\\
 \hline
 GET    & \texttt{/pianificazioni/\{id\}} & Permette la lettura da DB di una Pianificazione dato l'Id ottenendo come risposta la Pianificazione corrispondente.\\
 PUT & \texttt{/pianificazioni/\{id\}} & Permette la modifica parziale o totale di campi di una Pianificazione su DB sovrascrivendola.\\
 DELETE    & \texttt{/pianificazioni/\{id\}} & Permette l'eliminazione da DB di una Pianificazione dato l'Id ottenendo come risposta la Pianificazione eliminata.\\
 POST    & \texttt{/pianificazioni} & Permette l'inserimento di una nuova Pianificazione ed eventuali entità associate come: risorsa, ruolo, milestone, progetto, responsabile e figura.\\
-POST    & \texttt/{pianificazioni/xlsx} & Permette l'esportazione di report Excel di Pianificazioni in base a filtri inseriti dall'utente.\\
+POST    & \texttt{/pianificazioni/xlsx} & Permette l'esportazione di report Excel di Pianificazioni in base a filtri inseriti dall'utente.\\
 POST    & \texttt{/pianificazioni/list} & Rappresenta una POST di ricerca. Restituisce una lista di Pianificazioni in base ai filtri inseriti dall'utente, alla parola chiave inserita nella quicksearch (q) e a un booleano che determina se applicare tutti i filtri in modo congiuntivo (AND) o disgiuntivo (OR).\\
 PATCH    & \texttt{/pianificazioni/\{id\}/times} & Permette la modifica dei campi Data Inizio e Data Fine di una Pianificazione su DB.\\
 PATCH    & \texttt{/pianificazioni/\{id\}/festivi} & Permette la modifica del campo Festivi di una Pianificazione su DB.\\
@@ -117,7 +119,7 @@ Questi endpoint consentono la creazione, lettura, modifica ed eliminazione di Ri
 \renewcommand{\arraystretch}{2.5}
 \begin{center}
 \rowcolors{1}{white}{mygray}
-\begin{longtable}{p{1.3cm}|p{4.95cm}|p{5.7cm}}
+\begin{longtable}{p{1.5cm}|p{4.97cm}|p{5.7cm}}
 \textbf{Verbo}  & \textbf{Path} & \textbf{Descrizione}\\
 \hline
 GET    & \texttt{/richieste/\{id\}} & Permette la lettura da DB di una Richiesta dato l'Id ottenendo come risposta la Richiesta corrispondente.\\
