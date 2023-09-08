@@ -4,6 +4,14 @@
 \usepackage{colorprofiles}
 \usepackage{xcolor}
 
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
 \usepackage{enumitem}
 
 
