@@ -51,8 +51,8 @@ RFOB-28  & Il sistema permette la visualizzazione del codice del Cliente & UC6.1
 RFOB-29  & Il sistema permette la creazione di una nuova Richiesta di figure professionali & UC7 \\ 
 RFOB-30  & Il sistema controlla che il Richiedente esista & UC8 \\ 
 RFOB-31  & Il sistema controlla che le Figure richieste e le Skill richieste siano coerenti & UC8 \\ 
-RFOB-32  & Il sistema controlla che il Cliente associato sia corretto & UC8 \\ 
-RFOB-33  & Il sistema controlla che il Progetto associato sia corretto & UC8 \\ 
+RFOB-32  & Il sistema controlla che il Cliente associato sia corretto & UC8,UC17,UC28 \\ 
+RFOB-33  & Il sistema controlla che il Progetto associato sia corretto & UC8,UC17,UC28 \\ 
 RFOB-34  & Il sistema controlla che una Richiesta che si vuole eliminare non sia associata ad una Pianificazione & UC8 \\ 
 RFOB-35 & Il sistema controlla che i nuovi valori per la modifica di un singolo campo siano corretti & UC8,UC17,UC28\\
 RFOB-36  & Il sistema controlla che i filtri inseriti siano valorizzati & UC8,UC17,UC28 \\ 
@@ -73,7 +73,7 @@ RFOB-45  & Il sistema permette la visualizzazione dei dettagli della Richiesta s
 \hypertarget{rf46}{RFDE-46}  & Il sistema permette la visualizzazione della traccia di audit di una Richiesta & UC13 \\ 
 RFDE-47  & Il sistema permette la visualizzazione di un audit di una Richiesta della traccia & UC13.1 \\ 
 RFDE-48  & Il sistema permette la visualizzazione del timestamp dell'operazione in un singolo audit di un audit trail & UC13.1.1 \\ 
-RF4DE-9  & Il sistema permette la visualizzazione dell'operazione in un singolo audit di un audit trail & UC13.1.2 \\ 
+RF4DE-49  & Il sistema permette la visualizzazione dell'operazione in un singolo audit di un audit trail & UC13.1.2 \\ 
 RFDE-50  & Il sistema permette la visualizzazione della Richiesta originale in un singolo audit di un audit trail & UC13.1.3 \\ 
 RFDE-51  & Il sistema permette la visualizzazione della Richiesta modificata in un singolo audit di un audit trail & UC13.1.4 \\ 
 
@@ -83,38 +83,37 @@ RFDE-51  & Il sistema permette la visualizzazione della Richiesta modificata in 
 RFOB-53  & Il sistema permette la modifica dell'attributo Stato di una Richiesta & UC15 \\ 
 
 RFOB-54  & Il sistema permette la creazione di una nuova Pianificazione & UC16 \\  
-RFOB-55  & Il sistema controlla che il Progetto associato sia corretto & UC17 \\ 
-RFOB-56  & Il sistema controlla che la Risorsa non sia occupata in quel Ruolo & UC17 \\ 
-RFOB-57  & Il sistema controlla che la Risorsa possa svolgere il Ruolo richiesto & UC17 \\ 
-RFOB-58  & Il sistema permette l'eliminazione di una Pianificazione  & UC18 \\ 
-RFOB-59 & Il sistema permette la modifica totale di una Pianificazione sovrascrivendola & UC19\\
-RFOB-60 & Il sistema permette la modifica delle date di una Pianificazione & UC20\\
-RFOB-61 & Il sistema permette la modifica del campo Festivi di una Pianificazione & UC21\\
-RFDE-62 & Il sistema permette di esportare un file Excel contenente le Pianificazioni risultanti dai filtri inseriti dall'utente nella richiesta & UC22\\
-\hypertarget{rf63}{RFOP-63} & Il sistema permette di esportare un file Excel contenente lo storico delle Pianificazioni relative ad un Progetto, mostrando le Risorse allocate e l'effettivo impiego di queste nelle attività & UC23\\
-\hypertarget{rf64}{RFOP-64} &  Il sistema permette di esportare un file Excel contenente lo storico delle Pianificazioni di una singola Risorsa, visualizzando data fine e data inizio e le relative mansioni & UC24\\
+RFOB-55  & Il sistema controlla che la Risorsa non sia occupata in quel Ruolo & UC17 \\ 
+RFOB-56  & Il sistema controlla che la Risorsa possa svolgere il Ruolo richiesto & UC17 \\ 
+RFOB-57  & Il sistema permette l'eliminazione di una Pianificazione  & UC18 \\ 
+RFOB-58 & Il sistema permette la modifica totale di una Pianificazione sovrascrivendola & UC19\\
+RFOB-59 & Il sistema permette la modifica delle date di una Pianificazione & UC20\\
+RFOB-60 & Il sistema permette la modifica del campo Festivi di una Pianificazione & UC21\\
+RFDE-61 & Il sistema permette di esportare un file Excel contenente le Pianificazioni risultanti dai filtri inseriti dall'utente nella richiesta & UC22\\
+\hypertarget{rf62}{RFOP-62} & Il sistema permette di esportare un file Excel contenente lo storico delle Pianificazioni relative ad un Progetto, mostrando le Risorse allocate e l'effettivo impiego di queste nelle attività & UC23\\
+\hypertarget{rf63}{RFOP-63} &  Il sistema permette di esportare un file Excel contenente lo storico delle Pianificazioni di una singola Risorsa, visualizzando data fine e data inizio e le relative mansioni & UC24\\
 
-\hypertarget{rf65}{RFDE-65} & Il sistema permette la visualizzazione della traccia di audit di una Pianificazione & UC25\\
-RFDE-66 & Il sistema permette la visualizzazione di un audit di una Pianificazione della traccia & UC25.1\\
-RFDE-67 & Il sistema permette la visualizzazione del timestamp dell'operazione in un singolo audit di un audit trail & UC25.1.1\\
-RFDE-68 & Il sistema permette la visualizzazione dell'operazione in un singolo audit di un audit trail & UC25.1.2\\
-RFDE-69 & Il sistema permette al visualizzazione della Pianificazione originale in un singolo audit di un audit trail & UC25.1.3\\
-RFDE-70 & Il sistema permette al visualizzazione della Pianificazione modificata in un singolo audit di un audit trail & UC25.1.4\\
-RFOB-71 & Il sistema permette la visualizzione della lista di Pianificazioni risultanti in seguito ad una richiesta formata da: filtri forniti dall'utente, parola da inserire nella ricerca rapida e se i filtri devono essere congiunti o disgiunti & UC26\\
-RFOB-72 & Il sistema permette la visualizzazione di una singola Pianificazione dalla lista & UC26.1\\
-RFOB-73 & Il sistema permette la visualizzazione diretta di una singola Pianificazione & UC26.1\\
-RFOB-74 & Il sistema verifica che la richiesta alla singola Pianificazione sia valida & UC26.2\\
-RFOB-75 & Il sistema permette la visualizzazione dei dettagli della Pianificazione selezionata & UC26.1.1\\
-RFOB-76 & Il sistema permette di creare una nuova Milestone da associare ad una Pianificazione & UC27\\
-RFOB-77 & Il sistema controlla che il Progetto, il Commerciale associati alla Milestone siano corretti & UC28\\
-RFOB-78 & Il sistema controlla che la Milestone che si vuole eliminare non sia associata ad una Pianificazione & UC28\\
-RFOB-79 & Il sistema permette la modifica totale di una Milestone sovrascrivendola & UC29\\
-RFOB-80 & Il sistema permette la visualizzazione della lista di Milestone risultanti in seguito ad una richiesta formata da: filtri forniti dall'utente, parola da inserire nella ricerca rapida e se i filtri devono essere congiunti o disgiunti & UC30\\
-RFOB-81 & Il sistema permette la visualizzazione di una singola Milestone dalla lista & UC30.1\\
-RFOB-82 & Il sistema permette la visualizzazione diretta di una singola Milestone & UC30.1\\
-RFOB-83 & Il sistema verifica che la richiesta alla singola Pianificazione sia valida & UC30.2\\
-RFOB-84 & Il sistema permette la visualizzazione dei dettagli della Pianificazione selezionata & UC30.1.1\\
-RFOB-85 & Il sistema permette l'eliminazione di una Milestone & UC31\\
+\hypertarget{rf64}{RFDE-64} & Il sistema permette la visualizzazione della traccia di audit di una Pianificazione & UC25\\
+RFDE-65 & Il sistema permette la visualizzazione di un audit di una Pianificazione della traccia & UC25.1\\
+RFDE-66 & Il sistema permette la visualizzazione del timestamp dell'operazione in un singolo audit di un audit trail & UC25.1.1\\
+RFDE-67 & Il sistema permette la visualizzazione dell'operazione in un singolo audit di un audit trail & UC25.1.2\\
+RFDE-68 & Il sistema permette al visualizzazione della Pianificazione originale in un singolo audit di un audit trail & UC25.1.3\\
+RFDE-69 & Il sistema permette al visualizzazione della Pianificazione modificata in un singolo audit di un audit trail & UC25.1.4\\
+RFOB-70 & Il sistema permette la visualizzione della lista di Pianificazioni risultanti in seguito ad una richiesta formata da: filtri forniti dall'utente, parola da inserire nella ricerca rapida e se i filtri devono essere congiunti o disgiunti & UC26\\
+RFOB-71 & Il sistema permette la visualizzazione di una singola Pianificazione dalla lista & UC26.1\\
+RFOB-72 & Il sistema permette la visualizzazione diretta di una singola Pianificazione & UC26.1\\
+RFOB-73 & Il sistema verifica che la richiesta alla singola Pianificazione sia valida & UC26.2\\
+RFOB-74 & Il sistema permette la visualizzazione dei dettagli della Pianificazione selezionata & UC26.1.1\\
+RFOB-75 & Il sistema permette di creare una nuova Milestone da associare ad una Pianificazione & UC27\\
+RFOB-76 & Il sistema controlla che il il Commerciale associato alla Milestone sia corretto & UC28\\
+RFOB-77 & Il sistema controlla che la Milestone che si vuole eliminare non sia associata ad una Pianificazione & UC28\\
+RFOB-78 & Il sistema permette la modifica totale di una Milestone sovrascrivendola & UC29\\
+RFOB-79 & Il sistema permette la visualizzazione della lista di Milestone risultanti in seguito ad una richiesta formata da: filtri forniti dall'utente, parola da inserire nella ricerca rapida e se i filtri devono essere congiunti o disgiunti & UC30\\
+RFOB-80 & Il sistema permette la visualizzazione di una singola Milestone dalla lista & UC30.1\\
+RFOB-81 & Il sistema permette la visualizzazione diretta di una singola Milestone & UC30.1\\
+RFOB-82 & Il sistema verifica che la richiesta alla singola Pianificazione sia valida & UC30.2\\
+RFOB-83 & Il sistema permette la visualizzazione dei dettagli della Pianificazione selezionata & UC30.1.1\\
+RFOB-84 & Il sistema permette l'eliminazione di una Milestone & UC31\\
 \hline
 \hiderowcolors
 \caption{Lista dei Requisiti}

@@ -16,7 +16,7 @@ Una tabella di log in un database è una struttura dati che registra le attivit�
 \item Risoluzione dei problemi, possono aiutare gli amministratori del database a capire la radice del problema, facilitando la risoluzione di bug;
 \item Recupero dati, ritornano utili in caso di perdita di dati o di necessità a riprendere dati cancellati o modificati;
 \end{itemize} 
-Per soddisfare il requisito \hyperlink{rf65}{RFDE-65} è stata creata una tabella di log per le Pianificazioni.
+Per soddisfare il requisito \hyperlink{rf64}{RFDE-64} è stata creata una tabella di log per le Pianificazioni.
 Per limiti di tempo non è stata creata e gestita anche l'altra tabella di log delle Richieste come scritto nel requisito \hyperlink{rf46}{RFDE-46}.\\
 \subsection{Tabella PianificazioniAudit}
 La tabella di log per le Pianificazioni contiene tutti gli attributi di Pianificazioni, ma duplicati. Si distinguono in attributi "old", facendo riferimento ai valori della Pianificazione prima dell'operazione e "new", facendo riferimento ai valori della Pianificazione dopo l'operazione. La chiave primaria della tabella è una chiave composta da: Id della Pianificazione e timestamp dell'attività. Si possono notare anche gli attributi "Utente", per tenere traccia di chi ha effettuato la modifica e l'attributo "Operazione", per indicare se si tratta di un'operazione di cancellazione,inserimento o modifica.\\

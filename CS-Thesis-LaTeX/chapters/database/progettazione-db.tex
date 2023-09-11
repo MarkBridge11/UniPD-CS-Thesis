@@ -24,7 +24,7 @@ Tabella del database aziendale contenente i ruoli possibili associati ad una Ris
 \subsection*{anagrafe\_ruolo <<esterna>>}
 Tabella di join del database aziendale tra \textit{anagrafe\_light} e \textit{ruolo}.
 \subsection*{cliente <<esterna>>}
-Tabella del database aziendale contenente i dati dei Clienti associabili ad ai Progetti.
+Tabella del database aziendale contenente i dati dei Clienti associabili ai Progetti.
 \subsection*{sched\_progetto}
 Tabella contenente i Progetti a cui una Richiesta o una Pianificazione può essere associata.
 
@@ -93,7 +93,7 @@ tipo\_skill\_id & Id della Skill richiesta associata <<PK>> <<FK>>\\
 \end{center}
 
 \subsection*{tipo\_skill <<esterna>>}
-Tabella del database aziendale contenente skill conosciute dalle Figure Professionali.
+Tabella del database aziendale contenente le skills conosciute o richiedibili alle Figure Professionali.
 
 \subsection*{sched\_richiesta\_dettaglio}
 Tabella creata per contenere i dettagli di ogni Figura richiesta. Ogni Figura richiesta corrisponde ad una nuova riga nella tabella.\\
@@ -139,7 +139,7 @@ Tabella creata per contenere le Pianificazioni. Quando il Program Manager prende
 Id & UUID univoco <<PK>>\\
 Ambito & Ambito di assegnazione della Pianificazione\\
 Note & Note inseribili per la Pianificazione\\
-Delivery & Valore che può essere Delivery Core o Delivery Digital\\
+Delivery & Valore che può essere Delivery Core (se riguarda aspetti fondamentali di un progetto) o Delivery Digital (se riguarda aspetti specifici di un progetto)\\
 Data\_inizio & Data di inizio della Pianificazione\\
 Data\_fine & Data di fine della Pianificazione\\
 Giorni & Giorni di durata della Pianificazione\\
